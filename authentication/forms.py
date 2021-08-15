@@ -7,9 +7,9 @@ class UserSignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=60, help_text='Required.Add a valid email address')
     class Meta(UserCreationForm.Meta):
         model = User
-        # fields = ("email", "username", "password1", "password2")
+        fields = ("email", "password1", "password2")
 
-    @transactionn.atomic 
+    @transaction.atomic 
     def save(self):
         user = super().save(commit=False)
         user.is_user = True
@@ -21,6 +21,8 @@ class UserSignUpForm(UserCreationForm):
 class InstitutionSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
+        fields = ("email", "password1", "password2")
+
 
     def save(self, commit=True):
         user = super().save(commit=False)

@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+{% block title %} signup {% endblock title %}
+
+{% block content %}
+<h1>Sign up</h1>
+<p>Select below the type of account you want to create.</p>
+<div>
+    <button href="{% url 'user_signup'%}">As an instution</button>
+    <button href="{% url 'instution_signup'%}">As a User</button>
+</div>
+{% endblock content %}

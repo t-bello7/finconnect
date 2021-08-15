@@ -1,14 +1,16 @@
 from django.contrib.auth import login,authenticate
 from django.shortcuts import redirect
 from django.views.generic import CreateView
-from .forms import UserSignUpForm
+from .forms import UserSignUpForm,InstitutionSignUpForm
 from .models import User
 from .decorators import user_required
 
 
 
 # Create your views here.
-
+class SignUpView(CreateView):
+    model = User
+    template_name = 'registration/signup.html'
 
 class UserSignUpView(CreateView):
     model = User
@@ -22,7 +24,7 @@ class UserSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('user.hompage')
+        return redirect('hompage')
 
 
 
@@ -38,4 +40,4 @@ class InstitutionSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('instituition.dashboard')
+        return redirect('dashboard')

@@ -10,7 +10,7 @@ from django.contrib.auth.models import (
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from datetime import datetime, timedelta
-from rest_framework_simplejwt.tokens import RefreshToken
+# from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your models here.
 
@@ -49,14 +49,14 @@ class MyUserManager(UserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser, PermissionMixin, TrackingModel):
+class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
     """
     An abstract base class implementing a fully featured User Model with admin-compliant permissions.
     Automatically created username that can be changed 
     # """
     # username_validator = UnicodeUsernameValidator()
     # username = models.CharField(_('username'), max_length=150)
-
+    username = None
     first_name = models.CharField(_('first name'), max_length=150, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email_address'), blank=True, unique=True)
@@ -92,25 +92,33 @@ class User(AbstractBaseUser, PermissionMixin, TrackingModel):
     )
     objects = MyUserManager()
 
-    EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
 
     def __str__(self):
         return self.email
     
-    @property
-    def token(self):
-        refresh = RefreshToken.for_user(self)
-        return {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token)
-        }
+    # @property
+    # def token(self):
+    #     refresh = RefreshToken.for_user(self)
+    #     return {
+    #         'refresh': str(refresh),
+    #         'access': str(refresh.access_token)
+    #     }
 
 class UserProfile(models.Model):
-    user = models.OnetoOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
+    def set_username(sender, isntance, **kwargs):
+        if not instance.username:
+            username = instance.first_name
+            counter=1
+            while User.objects.filter(username=username):
+                username = instance.first_name + str(counter)
+                counter += 1
+            instance.username = username
+    models.signals.pre_save.connect(set_username, sender=settings.AUTH_USER_MODEL)
 
 class institutinProfile(models.Model):
     pass

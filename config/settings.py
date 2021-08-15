@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import sys
 import os
+import django_heroku
+
 from pathlib import Path
-from envrions import Env
+from environs import Env
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +33,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://finconnect.herokuapp.com', '127.0.0.1']
 
 AUTH_USER_MODEL = "authentication.User"
 # Application definition
@@ -44,10 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third party package
-    'rest_framework',
-    'rest_framework_simplejwt',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt.token_blacklist',
+    # 'rest_framework',
+    # 'rest_framework_simplejwt',
+    # 'rest_framework.authtoken',
+    # 'rest_framework_simplejwt.token_blacklist',
 
 
     #created apps
@@ -91,8 +93,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':os.path.join(BASE_DIR, 'staticfiles')
+        'default':env.dj_db_url("DATABASE_URL")
     }
 }
 
@@ -145,3 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
