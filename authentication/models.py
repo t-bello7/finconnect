@@ -55,11 +55,11 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
     Automatically created username that can be changed 
     # """
     # username_validator = UnicodeUsernameValidator()
-    # username = models.CharField(_('username'), max_length=150)
-    username = None
+    username = models.CharField(_('username'), max_length=150)
     first_name = models.CharField(_('first name'), max_length=150, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email_address'), blank=True, unique=True)
+    last_login = models.CharField(max_length=100,default=timezone.now())
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -110,7 +110,7 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    def set_username(sender, isntance, **kwargs):
+    def set_username(sender, instance, **kwargs):
         if not instance.username:
             username = instance.first_name
             counter=1

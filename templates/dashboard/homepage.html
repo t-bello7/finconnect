@@ -1,2 +1,84 @@
-{% extends '_base.html'%}
+{% extends '_base.html' %}
 {% block title %} homepage {% endblock title %}
+{% block content %}
+<div class="search">
+    <h1>Connect with your desired vendors</h1>
+    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+    <div class="search__bar">
+        <form action="">
+            <select name="category" id="">
+                <option value="">Microfinance Institutions</option>
+                <option value="">Cooperative Societies</option>
+                <option value="">Financial Banking</option>
+                <option value="">Insurance Companies</option>
+            </select>
+            <select name="state" id="">
+                <option value="">Lagos State</option>
+                <option value="">Lagos State</option>
+
+            </select>
+            <div class=search__input>
+                <input type="search">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="categories">
+    <h2>Check out the list of popular categories</h2>
+    <div class="categories_list">
+        <div class="category">
+            <h2>Microfinance Institutions</h2>
+            <h3>80+ listings</h3>
+        </div>
+        <div class="category">
+            <h2>Cooperative Societies</h2>
+            <h3>50+ listings</h3>
+        </div>
+        <div class="category">
+            <h2>Financial Banks</h2>
+            <h3>50+ listings</h3>
+        </div>
+        <div class="category">
+            <h2>Insurance Companies</h2>
+            <h3>10+ listings</h3>
+        </div>
+    </div>
+</div>
+<div class="featured__listing">
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+    <div class="featured__listing_list">
+        <div class="listing">
+            <img src="" alt="">
+            <h4>Mfb</h4>
+            <h5>2nd Floor, Fabac Center, 3, Ligali Ayorinde, Lagos</h5>
+            <h5>01-2719325-6</h5>
+            <h5>Mondays to Fridays, 8am - 5pm</h5>
+            <div class="views">
+                <h5>150</h5>
+                <h5>90</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer__copyright">
+        <h4> Copyright 2021 - Finconnect Technolgies</h4>
+        <h4> Limited | All Rights Reserved</h4>
+    </div>
+    <div class="footer__product">
+        <h4>Web App</h4>
+    </div>
+    <div class="footer__legal">
+        <h4>Terms and Conditions</h4>
+        <h4>Privacy and Policy </h4>
+        <h4>FAQS</h4>
+    </div>
+    <div class="footer__product">
+        <h4>Address: 17, Tejuosho Road Yaba, Lagos State</h4>
+        <h4>Email: fintechinnovationhub@gmail.com</h4>
+        <h4>Phone: (234) 813-275-5220</h4>
+    </div>
+</div>
+
+{% endblock content %}

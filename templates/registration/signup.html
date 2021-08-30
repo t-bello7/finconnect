@@ -5,7 +5,8 @@
 <h1>Sign up</h1>
 <p>Select below the type of account you want to create.</p>
 <div>
-    <button href="{% url 'user_signup'%}">As an instution</button>
-    <button href="{% url 'instution_signup'%}">As a User</button>
+    
+   <a href="{% url 'user_signup'%}"><button>As an User</button></a>
+   <a href="{% url 'institution_signup'%}"><button>As a Institution</button> </a>
 </div>
 {% endblock content %}
