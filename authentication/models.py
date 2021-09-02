@@ -10,7 +10,6 @@ from django.contrib.auth.models import (
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from datetime import datetime, timedelta
-# from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your models here.
 
@@ -56,10 +55,9 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
     # """
     # username_validator = UnicodeUsernameValidator()
     username = models.CharField(_('username'), max_length=150)
-    first_name = models.CharField(_('first name'), max_length=150, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    full_name = models.CharField(max_length=200)
     email = models.EmailField(_('email_address'), blank=True, unique=True)
-    last_login = models.CharField(max_length=100,default=timezone.now())
+    # last_login = models.CharField(max_length=100,default=timezone.now())
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -83,7 +81,6 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
             'Designates whether the user can log into this admin site'
         )
     )
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     email_verified = models.BooleanField(
         _('email_verified'),
         default=False,
@@ -109,20 +106,20 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
     #     }
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
-    full_name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None, primary_key=True)
+    address = models.CharField(max_length=150)
     bio = models.TextField(max_length=500, blank=True)
     def set_username(sender, instance, **kwargs):
         if not instance.username:
-            username = instance.first_name
+            username = instance.full_name
             counter=1
             while User.objects.filter(username=username):
-                username = instance.first_name + str(counter)
+                username = instance.full_name + str(counter)
                 counter += 1
             instance.username = username
     models.signals.pre_save.connect(set_username, sender=settings.AUTH_USER_MODEL)
+    profile_image = models.ImageField(null=True,blank=True)
 
-class InstitutinProfile(models.Model):
-    pass
-
+    def __str__():
+        return self.full_name
 

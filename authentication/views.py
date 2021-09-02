@@ -1,10 +1,8 @@
-from django.contrib.auth import login,authenticate, logout
+from django.contrib.auth import login,authenticate, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic import CreateView, View
 from .forms import UserSignUpForm,InstitutionSignUpForm, UserAuthenticateForm
-# from .models import User
-from django.contrib.auth import get_user_model
 from .decorators import user_required
 import json
 import re

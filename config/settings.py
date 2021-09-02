@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     # 'rest_framework_simplejwt.token_blacklist',
     #created apps
     'authentication',
-    'dashboard'
+    'dashboard',
+    'listings',
 ]
 
 MIDDLEWARE = [

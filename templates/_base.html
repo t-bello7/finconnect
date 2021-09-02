@@ -17,22 +17,22 @@
         <div class="navbar__container">
             <a href="{% url 'homepage' %}" class="">finconnect</a>
             <ul class="nav">
-               <li><a href="">Home</a></li> 
-                <li><a href="">About Us</a></li>
-                <li><a href="">News/FAQS</a></li>
-                <li><a href="">Contact</a></li>
                 {% if user.is_authenticated %}
                 <form action="{% url 'logout'%}" method='POST'>
                     {% csrf_token %}
                     <input type="submit" value="Log Out">
                 </form>
+                <li><a href="">My Bookings</a></li> 
+                <li><a href="">Manage Listsings</a></li> 
+                <li><a href="">My Profile</a></li> 
                 {% else %}
                 {% if user.is_institution%}
-                <li><a href="{% url 'dashboard' %}">dashboard</a></li>
                 {% endif %}
                 <button><a href="{% url 'signup'%}" class="">Register </a></button>
                 <button><a href="{% url 'login' %}"> Login</a></button>
                 {% endif %}
+                <li><a href="">List Institutions</a></li> 
+                
             </ul>
         </div>
     </header>
