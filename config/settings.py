@@ -50,14 +50,13 @@ INSTALLED_APPS = [
     # 'rest_framework_simplejwt',
     # 'rest_framework.authtoken',
     # 'rest_framework_simplejwt.token_blacklist',
-
-
     #created apps
     'authentication',
     'dashboard'
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -138,9 +137,9 @@ USE_TZ = True
 # LOGIN_URL = ''
 LOGIN_REDIRECT_URL = 'homepage'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -9,6 +9,7 @@ django-restframework = "*"
 pillow = "*"
 environs = "*"
 django-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 

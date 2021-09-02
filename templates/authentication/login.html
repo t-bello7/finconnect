@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+<!-- <h2>Login</h2>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+
+</form> -->
+
+<div class="card__title">
+    <h4>Register</h4>
+ </div>
+ <form action="{%url 'login' %}" method="post">
+    {% csrf_token %}
+    <div class="">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="emailField" placeholder="abc@xyz.com" value="{{fieldValues.email}}">
+    </div>
+    <div class="invalid_feedback" style="display: none;">
+    </div>
+    <div class="success_feedback">
+    </div>
+    <div class="">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="passwordField" placeholder="Password">
+        <small class="showPasswordToggle">SHOW</small>
+    </div>
+    <button class="submit-btn" type="submit"> Login </button>
+ </form>
+ </div>
+
+{% endblock content %}

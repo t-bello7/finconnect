@@ -33,16 +33,16 @@ class MyUserManager(UserManager):
         user.save(using=self.db)
         return user
 
-    def create_user(self, email=None, Password=None, **extra_field):
-        extra_field.setdefault('is_staff', False)
-        extra_field.setdefault('is_superuser', False)
+    def create_user(self, email=None, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser mus have is_staff=True.')
+            raise ValueError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
         
@@ -67,6 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
             'Designates whether the user can log into this admin site.'
         ),
     )
+    admin = models.BooleanField(default=False)
     is_institution = models.BooleanField(
         _('user is institution'),
         default=False,
@@ -108,7 +109,8 @@ class User(AbstractBaseUser, PermissionsMixin, TrackingModel):
     #     }
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
+    full_name = models.CharField(max_length=100)
     bio = models.TextField(max_length=500, blank=True)
     def set_username(sender, instance, **kwargs):
         if not instance.username:
@@ -120,7 +122,7 @@ class UserProfile(models.Model):
             instance.username = username
     models.signals.pre_save.connect(set_username, sender=settings.AUTH_USER_MODEL)
 
-class institutinProfile(models.Model):
+class InstitutinProfile(models.Model):
     pass
 
 
