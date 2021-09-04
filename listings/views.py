@@ -4,4 +4,5 @@ from .models import Plans, Listings
 
 # Create your views here.
 class ListView(View):
-    pass
+    def get(self, request):
+        return render(request, 'listings/list_form.html')

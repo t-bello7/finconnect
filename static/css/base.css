@@ -60,7 +60,7 @@ div.categories__container {
 }
 
 div.categories__container div.categories__list {
-  width: 100%;
+  width: 1440px;
   display: grid;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -74,6 +74,10 @@ div.featured__listing div.featured__list {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+div.featured__listing div.featured__list div.listing img {
+  width: 300px;
+  height: 300px;
 }
 div.locations__container {
   width: 1440px;

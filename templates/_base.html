@@ -23,7 +23,7 @@
                     <input type="submit" value="Log Out">
                 </form>
                 <li><a href="">My Bookings</a></li> 
-                <li><a href="">Manage Listsings</a></li> 
+                <li><a href="{% url 'list_form' %}">Manage Listsings</a></li> 
                 <li><a href="">My Profile</a></li> 
                 {% else %}
                 {% if user.is_institution%}
