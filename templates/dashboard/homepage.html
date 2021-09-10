@@ -3,12 +3,11 @@
 
 {% block title %} Homepage {% endblock title %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
 <div class="search__container">
     <div class="search__title">
         <h1>Connect with your desired vendors</h1>
-    </div>
-    <div class="search__title">
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit perferendis nulla sit qui, eveniet voluptatum doloremque ipsa rerum ab magni necessitatibus tempore nisi! Delectus expedita molestias optio </p>
     </div>
     <div class="search__bar">
         <form action="" id="searchForm">
@@ -35,25 +34,28 @@
 </div>
 <div class="categories__container">
     <div class="categories__title">
-        <h2>Check out the list of popular categories</h2>
+        <h2>Popular Categories</h2>
+        <p>Check out the list of popular categories</p>
     </div>
     <div class="categories__list">
-        {% for choice in listing_instance.INSTITUTION_CHOICES %}
-        <div class="category__item">
+    {% for choice in listing_instance.INSTITUTION_CHOICES %}
+        <div class="categories__item">
             <h2>{{choice.1}}</h2>
-            <!-- {% with total=listings.count %} -->
-            <!-- <p>{{ total }} listings</p> -->
-            <!-- {% endwith %} -->
+            <hr width=200px>
+                <!-- {% with total=listings.count %} -->
+                <!-- <p>{{ total }} listings</p> -->
+                <!-- {% endwith %} -->
         </div>
         {% endfor %}
     </div>
 </div>
-<div class="featured__listing">
-    <div class="featured__title">
+<div class="featured__container">
+    <div class="featured__title ">
         <h2>Featured Spaces</h2>
     </div>
     <div class="featured__list">
         {% for list in listings %}
+        <a href="#">
         <div class="listing">
             <img src="{{list.list_image.url}}" alt="{{list.name}}">
             <h4>{{ list.name }}</h4>
@@ -69,6 +71,7 @@
                 <h5>90</h5>
             </div> -->
         </div>
+        </a>
         {% endfor %}
  
   
@@ -89,33 +92,34 @@
 </div>
 
 <div class="footer">
-
-    <div class="footer__product">
-        <h4>Institutions</h4>
-
-        <p>Microfinance Banks</p>
-        <p>Cooperative Societies</p>
-        <p>Financial Banking</p>
-        <p>Insurance Companies</p>
+    <div class="footer__sections container">
+        <div class="footer__section">
+            <span>Institutions</span>
+            <a href="" class="footer__link">Microfinance Banks</a>
+            <a href="" class="footer__link">Cooperative Societies</a>
+            <a href="" class="footer__link">Financial Banking</a>
+            <a href="" class="footer__link">Insurance Companies</a>
+        </div>
+        <div class="footer__section">
+            <span>More</span>
+            <a href="" class="footer__link">Add your Institution</a>
+            <a href="" class="footer__link">Terms and Conditions</a>
+            <a href="" class="footer__link">Privacy and Policy </a>
+            <a href="" class="footer__link">FAQS</a>
+        </div>
+        <div class="footer__section">
+            <span class="footer__title">Contact</span>
+            <a href="" class="footer__link">Twitter</a>
+            <a href="" class="footer__link">Instagram</a>
+            <a href="" class="footer__link">Linkedin</a>
+            <a href="" class="footer__link">fintechinnovationhub@gmail.com</a>
+            <a href="" class="footer__link">+234 (813)-275-5220</a>
+            <a href="" class="footer__link">17, Tejuosho Road Yaba, Lagos State</a>
+        </div>
     </div>
-    <div class="footer__legal">
-        <h4>More</h4>
-        <p>Add your Institution</p>
-        <p>Terms and Conditions</p>
-        <p>Privacy and Policy </p>
-        <p>FAQS</p>
-    </div>
-    <div class="footer__contact">
-        <h4>Contact</h4>
-        <p>Twitter</p>
-        <p>Instagram</p>
-        <p>Linkedin</p>
-        <p>fintechinnovationhub@gmail.com</p>
-        <p>+234 (813)-275-5220</p>
-        <p>17, Tejuosho Road Yaba, Lagos State</p>
-    </div>
-    <div class="footer__copyright">
-        <p> Copyright 2021 - Finconnect Technolgies</p>
+    <div class="footer__copyright container">
+        <hr class="footer__hr">
+        <p> &copy; Copyright 2021 - Finconnect Technolgies</p>
         <p> Limited | All Rights Reserved</p>
     </div>
 </div>

@@ -1,0 +1,115 @@
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+div.search__container {
+  width: 100%;
+  height: 615px;
+  margin: 0 auto;
+  background: blue;
+}
+
+div.search__container div.search__title {
+  width: 800px;
+
+  padding: 15rem 0 0 0;
+  margin: 0 auto;
+}
+div.search__container div.search__bar form {
+  width: 800px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+}
+div.categories__container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+div.categories__container div.categories__list {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+div.categories__container div.categories__list div.categories__item {
+  width: 244px;
+  height: 160px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+div.featured__container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+div.featured__container div.featured__list {
+  text-decoration: none;
+  width: 1000px;
+  display: grid;
+  gap: 10%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+div.featured__container div.featured__list div.listing img {
+  width: 300px;
+  height: 300px;
+}
+div.locations__container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+div.locations__container div.locations__list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+div.footer {
+  background: #2351ca;
+}
+div.footer div.footer__sections {
+  padding: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.footer div.footer__sections div.footer_section {
+  width: 25%;
+  padding: 15px 0;
+  flex-shrink: 0;
+}
+
+div.footer div.footer__copyright,
+.footer__link,
+.footer__title {
+  display: block;
+}
+.footer__link {
+  color: white;
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  background: black;
+}
+div.footer div.footer__copyright .footer__hr {
+  height: 1px;
+  border: none;
+  background: white;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__section {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__section {
+    width: 100%;
+  }
+}
