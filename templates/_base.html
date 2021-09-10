@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/signup.css' %}"> -->
 </head>
 <body>
     <div class="container">
@@ -18,21 +18,16 @@
             <a href="{% url 'homepage' %}" class="">finconnect</a>
             <ul class="nav">
                 {% if user.is_authenticated %}
-                <form action="{% url 'logout'%}" method='POST'>
-                    {% csrf_token %}
-                    <input type="submit" value="Log Out">
-                </form>
+                <li><a href="{% url 'logout'%}"> Log Out</a></li>
                 <li><a href="">My Bookings</a></li> 
-                <li><a href="{% url 'list_form' %}">Manage Listsings</a></li> 
+                <li><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
                 <li><a href="">My Profile</a></li> 
                 {% else %}
                 {% if user.is_institution%}
                 {% endif %}
                 <button><a href="{% url 'signup'%}" class="">Register </a></button>
                 <button><a href="{% url 'login' %}"> Login</a></button>
-                {% endif %}
-                <li><a href="">List Institutions</a></li> 
-                
+                {% endif %}                
             </ul>
         </div>
     </header>

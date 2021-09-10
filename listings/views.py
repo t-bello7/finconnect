@@ -1,8 +1,83 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from .models import Plans, Listings
+import json
+from django.http import JsonResponse
 
 # Create your views here.
-class ListView(View):
+
+class SearchListing(View):
+    
+    def post(self, request):
+    # list_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    # name = models.CharField(max_length=100)
+    # institution = models.CharField(max_length=2, choices=INSTITUTION_CHOICES)
+    # address = models.CharField(max_length=150)
+        search_string = json.loads(request.body).get('searchText')
+        expense = Listings.objects.filter(
+            institution__starts_with=search_string, owner=request.user)
+class CheckBoxView(View):
+    def post(self, request):
+        data = json.loads(request.body)
+        check_box = data['checkbox']
+        if check_box % 2 == 1:
+            return JsonResponse({'check_valid':'Check Box Available'}, status=200)
+        return JsonResponse({'check_invalid':True})
+
+class InstitutionView(View):
     def get(self, request):
-        return render(request, 'listings/list_form.html')
+        listing_instance = Listings.objects.first()
+        context = {
+            'listing_instance': listing_instance
+        }
+        return render(request, 'listings/add-institution.html', context)
+
+    def post(self, request):
+        name = request.POST['name']
+        description = request.POST['description']
+        street = request.POST['street']
+        city = request.POST['city']
+        state = request.POST['state']
+        country = request.POST['country']
+        address = f'{street}{city}{state},{country}'
+        start_time = request.POST['start_time']
+        close_time = request.POST['close_time']
+        sat_work_hours = request.POST['sat_available']
+        institution = request.POST['institution']
+  
+        #     sat_work_hours = json.loads({'sat':'off'})
+        # # data = json.loads(request.body).get('satWok')
+        # check_box = data['checkbox']
+        if sat_work_hours ==  'on':
+            start_time_sat = request.POST['sat_start_time']
+            close_time_sat = request.POST['sat_close_time']
+            Listings.objects.create(owner=request.user, name=name, description=description, address=address, 
+        start_time = start_time, is_saturday_available = True ,close_time = close_time, start_time_sat = start_time_sat, close_time_sat= close_time_sat,institution=institution,)
+        else:
+            Listings.objects.create(owner=request.user, name=name, description=description, address=address, 
+        start_time = start_time, is_saturday_available = False ,close_time = close_time, start_time_sat = start_time_sat, close_time_sat= close_time_sat,institution=institution,)
+
+        listing_instance = Listings.objects.first()
+        context = {
+            'listing_instance': listing_instance
+        }
+    
+        return redirect('dashboard')
+    
+
+class PlanView(View):
+    def get(self, request):
+        return render(request, 'listing/add-institution.html')
+
+    def post(self, request):
+        plan = request.POST['plan_type']
+        plan_name = request.POST['plan_name']
+        plan_description = request.POST['plan_description']
+        price = request.POST['price']
+        rate = request.POST['rate']
+        image = request.POST['plan_image']
+        return render(request, 'listings/add-institution.html')
+
+class AddSuccessView(View):
+    def get(self, request):
+        return render(request, 'listings/add-success.html')

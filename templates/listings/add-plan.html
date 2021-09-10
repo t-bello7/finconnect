@@ -1,0 +1,54 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<!-- <aside>
+    <p>Step 1</p>
+    <p>Step 2</p>
+    <p>Step 2</p>
+    <p>Step 3</p>
+</aside> -->
+
+    <h2>Plans and Pricing</h2>
+
+<form action="" class="form3">
+    <div>
+        <label for="plan_type">Type of Financial Plan</label>
+        <select name="plan_type" id="plan_type">
+            <option value="loan">Loan</option>
+            <option value="Savings">Insurance</option>
+            <option value="Pension">Pension</option>
+            <option value="Pension">Pension</option>
+        </select>
+    </div>
+    <div>
+        <label for="plan_name">Name</label>
+        <input type="text" name="plan_name" id="">
+    </div>
+    <div>
+        <label for="plan_description">Description</label>
+        <textarea name="plan_description" placeholder="A description about you planning and Prices">
+
+        </textarea>
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="text" name="price" id="">
+    </div>
+
+    <div>
+        <label for="rate">Rate</label>
+        <select name="rate" id="rate">
+            <option value="yearly">Yearly</option>
+            <option value="monthly">Monthly</option>
+            <option value="daily">Daily</option>
+        </select>
+    </div>
+<!-- </form> -->
+<small>Add Plan</small>
+<!-- <form action="" class="form4"> -->
+    <h2>Upload Photos </h2>
+    <input type="file" name="plan_image">
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock content %}

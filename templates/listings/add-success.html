@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+
+{% block title %} Success {% endblock title %}
+
+{% block content %}
+
+<a href="{% url 'add_institution' %}"> <button>Add another Listing</button></a>
+<a href="{% url 'homepage' %}"><button>Close</button></a>
+{% endblock content %}

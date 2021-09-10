@@ -118,7 +118,7 @@ class RegistrationView(View):
 
 class LogoutView(View):
 
-    def post(self, request):
+    def get(self, request):
         logout(request)
         ##send a logout message
         return redirect('login')

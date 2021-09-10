@@ -1,2 +1,12 @@
 {% extends '_base.html'%}
 {% block title %} dashboard {% endblock title %}
+
+{% block content %}
+ <div>
+     
+     {% for listing in listings %}
+        <li>{{listing.name}}</li>
+     {% endfor %}
+     <a href="{% url 'add_institution' %}"><button>Add an Institution</button></a>
+ </div>
+{% endblock content %}

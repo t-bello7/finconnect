@@ -1,0 +1,95 @@
+div.auth__container {
+  padding: 150px 0;
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+div.auth__container .form * {
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+div.auth__container .form__titile {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+div.auth__container .form__item {
+  display: flex;
+  flex-direction: column;
+}
+div.auth__container .form__item > * {
+  align-self: flex-start;
+}
+
+div.auth__container .form__label {
+  font-weight: 600;
+  padding: 10px 0;
+}
+div.auth__container .form__input {
+  -webkit-appearance: none;
+  width: 100%;
+  max-width: 425px;
+  /* Fix for Safari/ ios date fields*/
+  min-height: calc(0.9em + (0.8em * 2));
+
+  padding: 0.8em;
+  font-size: 0.9em;
+  outline: none;
+  border: 1px solid #2351ca;
+  border-radius: 15px;
+  background: #f9f9f9;
+  transition: background 0.25s, boder-color 0.25s, color 0.25s;
+}
+div.auth__container .form__input:focus {
+  background: #fff;
+}
+div.auth__container .form__input::placeholder {
+  color: #bbbbbb;
+}
+
+div.auth__container .form__input--error {
+  color: #d50000;
+  background: #fff8f8;
+  border-color: #d50000;
+}
+
+div.auth__container .form__input--error::placeholder {
+  color: #ffbffb;
+}
+
+div.auth__container .form__error {
+  padding-top: 10px;
+  color: #d50000;
+  font-size: 0.9em;
+  visibility: hidden;
+}
+
+div.auth__container .form__input--error + .form__error {
+  visibility: visible;
+}
+div.auth__container .form__btn {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+
+  color: #fff;
+  background: #14b64a;
+  border: 2px solid #0fa942;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+div.auth__container .form__btn:active {
+  background: #fff;
+}
+.showPasswordToggle {
+  cursor: pointer;
+  transition: all;
+}
+
+.showPasswordToggle:hover {
+  transform: scale(1.2);
+}

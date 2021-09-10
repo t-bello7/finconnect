@@ -1,35 +1,53 @@
 {% extends '_base.html' %}
 {% load static %}
+
+
 {% block title %} Signup {% endblock title %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 
-<div class="card-title">
-   <h4>Register</h4>
-</div>
-<form action="{%url 'signup' %}" method="post">
-   {% csrf_token %}
-   <div class="">
-       <label for="name">Full name</label>
-       <input type="text" name="name" id="nameField" placeholder="Enter your Full name" value={{fieldValues.name}}>
-   </div>
-   <div class="">
-       <label for="email">Email Address</label>
-       <input type="email" name="email" id="emailField" placeholder="abc@xyz.com" value="{{fieldValues.email}}">
-   </div>
-   <div class="invalid_feedback" style="display: none;">
-   </div>
+<div class="auth__container">
+    <div class="signup__image">
+        <img src="{% static 'img/rafikis.png'%}" alt="">
+    </div>
 
-   <div class="success_feedback">
-   </div>
-   <div class="">
-       <label for="password">Password</label>
-       <input type="password" name="password" id="passwordField" placeholder="Password">
-       <small class="showPasswordToggle">SHOW</small>
-   </div>
-   <button class="submit-btn" type="submit"> Register </button>
-</form>
-<p>By proceeding, you agree to our <b>Privacy Policy & Service Agreement</b></p>
+
+    <form class="form" action="{%url 'signup' %}" method="post">
+        <div class="form__title">
+            <h4>Welcome</h4>
+            <p>Create an account!</p>
+        </div>
+    {% csrf_token %}
+        <div class="form__item">
+            <label for="name" class="form__label">Full name</label>
+            <input type="text" class="form__input form__input--error" name="name" id="nameField" placeholder="Enter your Full name" value={{fieldValues.name}}>
+        </div>
+        <div class="form__item">
+            <label for="email" class="form__label">Email Address</label>
+            <input type="email" class="form__input form__input--error" name="email" id="emailField" placeholder="abc@xyz.com" value="{{fieldValues.email}}">
+        </div>
+        <div class="invalid_feedback" style="display: none;">
+        </div>
+
+        <div class="success_feedback">
+        </div>
+        <div class="form__item">
+            <label for="password" class="form__label">Password</label>
+            <input type="password" class="form__input form__input--error" name="password" id="passwordField" placeholder="Password">
+            <small class="showPasswordToggle">SHOW</small>
+        </div>
+        <div class="form__item">
+            <p>By signing up, you agree to our <b>Terms of Service</b></p>
+        </div>
+
+        <div class="form__item">
+            <button class="form__btn" type="submit"> Sign Up </button>
+        </div>
+        <p>Already Have an account ? <a href="{% url 'login' %}"> Sign in</a></p>
+    </form>
+   
+
 </div>
 {% endblock content %}
 

@@ -1,4 +1,6 @@
 {% extends '_base.html' %}
+{% load static %}
+
 {% block title %} Homepage {% endblock title %}
 {% block content %}
 <div class="search__container">
@@ -9,9 +11,9 @@
         <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
     </div>
     <div class="search__bar">
-        <form action="">
+        <form action="" id="searchForm">
         <div>
-            <select name="category" id="">
+            <select name="category" id="categoryField">
                 <option value="">Microfinance Institutions</option>
                 <option value="">Cooperative Societies</option>
                 <option value="">Financial Banking</option>
@@ -19,14 +21,14 @@
             </select>
         </div>
         <div>
-            <select name="state" id="">
+            <select name="state" id="stateField">
                 <option value="">Lagos State</option>
                 <option value="">Lagos State</option>
             </select>
         </div>
         <div class=search__input>
-                <input type="search">
-                <input type="submit">
+                <input type="search" id="searchField">
+                <!-- <input type="submit"> -->
         </div>
         </form>
     </div>
@@ -36,22 +38,14 @@
         <h2>Check out the list of popular categories</h2>
     </div>
     <div class="categories__list">
+        {% for choice in listing_instance.INSTITUTION_CHOICES %}
         <div class="category__item">
-            <h2>Microfinance Institutions</h2>
-            <p>80+ listings</p>
+            <h2>{{choice.1}}</h2>
+            <!-- {% with total=listings.count %} -->
+            <!-- <p>{{ total }} listings</p> -->
+            <!-- {% endwith %} -->
         </div>
-        <div class="category">
-            <h2>Cooperative Societies</h2>
-            <p>50+ listings</p>
-        </div>
-        <div class="category">
-            <h2>Financial Banks</h2>
-            <p>50+ listings</p>
-        </div>
-        <div class="category">
-            <h2>Insurance Companies</h2>
-            <p>10+ listings</p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <div class="featured__listing">
@@ -125,5 +119,5 @@
         <p> Limited | All Rights Reserved</p>
     </div>
 </div>
-
+<script src="{% static 'js/search.js'%}"></script>
 {% endblock content %}
