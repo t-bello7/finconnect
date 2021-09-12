@@ -17,15 +17,22 @@
             <a href="{% url 'homepage' %}" class="">finconnect</a>
             <ul class="nav">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout'%}"> Log Out</a></li>
                 <li><a href="">My Bookings</a></li> 
                 <li><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
                 <li><a href="">My Profile</a></li> 
+                <button><a href="{% url 'logout'%}"> Log Out</a></button>
+
                 {% else %}
-                {% if user.is_institution%}
-                {% endif %}
                 <button><a href="{% url 'signup'%}" class="">Register </a></button>
                 <button><a href="{% url 'login' %}"> Login</a></button>
+
+                
+<!--          
+                {% if user.is_institution%} -->
+
+
+                <!-- {% endif %} -->
+
                 {% endif %}                
             </ul>
         </div>

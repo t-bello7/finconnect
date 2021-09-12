@@ -55,22 +55,22 @@
     </div>
     <div class="featured__list">
         {% for list in listings %}
-        <a href="#">
-        <div class="listing">
-            <img src="{{list.list_image.url}}" alt="{{list.name}}">
-            <h4>{{ list.name }}</h4>
-            <h5>{{ list.address }}</h5>
-            <h5>{{ list.number }}</h5>
-            {% if not list.is_saturday_availble %}
-            <h5>Monday - Friday {{ list.start_time}} {{ list.close_time}}</h5>
-            {% else %}
-            <h5>Monday - Saturday {{ list.start_time}} {{ list.close_time}}</h5>
-            {% endif %}
-            <!-- <div class="views">
-                <h5>150</h5>
-                <h5>90</h5>
-            </div> -->
-        </div>
+        <a href="{{ list.get_absolute_url }}">
+            <div class="listing">
+                <img src="{{list.list_image.url}}" alt="{{list.name}}">
+                <h4>{{ list.name }}</h4>
+                <h5>{{ list.address }}</h5>
+                <h5>{{ list.number }}</h5>
+                {% if not list.is_saturday_availble %}
+                <h5>Monday - Friday {{ list.start_time}} {{ list.close_time}}</h5>
+                {% else %}
+                <h5>Monday - Saturday {{ list.start_time}} {{ list.close_time}}</h5>
+                {% endif %}
+                <!-- <div class="views">
+                    <h5>150</h5>
+                    <h5>90</h5>
+                </div> -->
+            </div>
         </a>
         {% endfor %}
  
@@ -83,13 +83,25 @@
         <h2>Locations near you</h2>
     </div>
     <div class="locations__list">
-        <div class="listing">
-            <a href=""><img src="" alt=""></a>
+        <div class="listing__location">
+            <a href=""><img src="{% static 'img/lagos.png'%}" alt=""></a>
             <p>Lagos</p>
         </div>
-        </div>    
-    </div>
+        <div class="listing__location">
+            <a href=""><img src="{% static 'img/abuja.png'%}" alt=""></a>
+            <p>Abuja</p>
+        </div>
+        <div class="listing__location">
+            <a href=""><img src="{% static 'img/kano.png'%}" alt=""></a>
+            <p>Kano</p>
+        </div>
+        <div class="listing__location">
+            <a href=""><img src="{% static 'img/ibadan.png'%}" alt=""></a>
+            <p>Ibadan</p>
+        </div>
+    </div>    
 </div>
+
 
 <div class="footer">
     <div class="footer__sections container">

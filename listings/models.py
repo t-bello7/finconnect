@@ -1,10 +1,14 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 # Create your models here.
 class Listings(models.Model):
+    #change id to uuid
+        # id = models.UUIDField(primary_key=True, default=uuid4,
+        #                   unique=True, editable=False)
     MICROFINANCE_BANK = 'MB'
     COOPERATIVE_SOCIETIES = 'CS'
     FINANCIAL_BANKING = 'FB'
@@ -49,8 +53,12 @@ class Listings(models.Model):
     def __str__(self):
         return self.name
     
+    def get_absolute_url(self):
+        return reverse("list-detail", kwargs={'pk': str(self.pk)})
+
     class Meta:
         verbose_name_plural='Listings'
+    
 
 class Plans(models.Model):
 

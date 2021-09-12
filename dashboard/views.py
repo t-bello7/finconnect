@@ -10,7 +10,10 @@ from django.http import JsonResponse
 # @method_decorator([login_required, user_required], name='dispatch')
 class SearchListingView(View):
     def get(self, request):
-        return render(request, 'dashboard/listing-search.html')
+        # listings = Listings.object.filter(
+        #     address__icontains=location
+        # )
+        return render(request, 'dashboard/list-search.html')
     def post(self, request):
     # list_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     # name = models.CharField(max_length=100)
@@ -45,12 +48,22 @@ class HomepageView(View):
         }
         return render(request, 'dashboard/homepage.html', context)
 
-
-
 class DashboardView(View):
     def get(self, request):
         listings_created_by_user = Listings.objects.filter(list_id=request.user)
+        print(listings_created_by_user)
         context = {
             'listings': listings_created_by_user
         }
         return render(request, 'dashboard/dashboard.html', context)
+
+class ListDetailView(View):  
+    def get(self, request, pk):
+        # id = request.GET.get('pk')
+        context = {
+            'listings' : Listings.objects.filter(pk=pk)
+        }
+        print(Listings.objects.filter(pk=pk))
+
+        # context["data"] = GeeksModel.objects.get(id =id)
+        return render(request, 'dashboard/list-detail.html', context)

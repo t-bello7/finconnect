@@ -64,6 +64,7 @@ div.locations__container {
 div.locations__container div.locations__list {
   width: 100%;
   display: grid;
+  gap: 10%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
