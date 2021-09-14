@@ -15,3 +15,6 @@ gunicorn = "*"
 
 [requires]
 python_version = "3.8"
+
+[packages.django-anymail]
+extras = [ "sparkpost", "sendgird",]

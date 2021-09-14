@@ -10,13 +10,12 @@
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit perferendis nulla sit qui, eveniet voluptatum doloremque ipsa rerum ab magni necessitatibus tempore nisi! Delectus expedita molestias optio </p>
     </div>
     <div class="search__bar">
-        <form action="" id="searchForm">
+        <form action="{%url 'search-list'%}" method="POST" id="searchForm">
         <div>
             <select name="category" id="categoryField">
-                <option value="">Microfinance Institutions</option>
-                <option value="">Cooperative Societies</option>
-                <option value="">Financial Banking</option>
-                <option value="">Insurance Companies</option>
+               {% for category in instituition_categories %}
+                <option value="{{ category.name }}">{{category.name}}</option>
+                {% endfor %}
             </select>
         </div>
         <div>
@@ -26,9 +25,10 @@
             </select>
         </div>
         <div class=search__input>
-                <input type="search" id="searchField">
+                <input type="search" name="search_text" id="searchField">
                 <!-- <input type="submit"> -->
         </div>
+        <button type="submit">Submit</button>
         </form>
     </div>
 </div>
@@ -38,15 +38,15 @@
         <p>Check out the list of popular categories</p>
     </div>
     <div class="categories__list">
-    {% for choice in listing_instance.INSTITUTION_CHOICES %}
+    {% for categories in instituition_categories %}
         <div class="categories__item">
-            <h2>{{choice.1}}</h2>
+            <h2>{{categories.name}}</h2>
             <hr width=200px>
                 <!-- {% with total=listings.count %} -->
                 <!-- <p>{{ total }} listings</p> -->
                 <!-- {% endwith %} -->
         </div>
-        {% endfor %}
+    {% endfor %}
     </div>
 </div>
 <div class="featured__container">
@@ -61,11 +61,11 @@
                 <h4>{{ list.name }}</h4>
                 <h5>{{ list.address }}</h5>
                 <h5>{{ list.number }}</h5>
-                {% if not list.is_saturday_availble %}
+                <!-- {% if not list.is_saturday_availble %} -->
                 <h5>Monday - Friday {{ list.start_time}} {{ list.close_time}}</h5>
-                {% else %}
+                <!-- {% else %}
                 <h5>Monday - Saturday {{ list.start_time}} {{ list.close_time}}</h5>
-                {% endif %}
+                {% endif %} -->
                 <!-- <div class="views">
                     <h5>150</h5>
                     <h5>90</h5>

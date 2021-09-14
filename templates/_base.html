@@ -19,7 +19,7 @@
                 {% if user.is_authenticated %}
                 <li><a href="">My Bookings</a></li> 
                 <li><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
-                <li><a href="">My Profile</a></li> 
+                <li><a href="{% url 'profile' %}">My Profile</a></li> 
                 <button><a href="{% url 'logout'%}"> Log Out</a></button>
 
                 {% else %}

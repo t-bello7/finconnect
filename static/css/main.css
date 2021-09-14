@@ -12,13 +12,12 @@ div.search__container {
 
 div.search__container div.search__title {
   width: 800px;
-
   padding: 15rem 0 0 0;
   margin: 0 auto;
 }
 div.search__container div.search__bar form {
-  width: 800px;
-  height: 40px;
+  width: 50%;
+  /* height: 40px; */
   margin: 0 auto;
   background-color: white;
   display: flex;

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{% static 'css/add.css' %}">
 
 <h2>Add Your Institution</h2>
-<form action="{% url 'add_institution' %}" class="form1" method="POST">
+<form action="{% url 'add_institution' %}" class="form1" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 <div>
     <label for="name">Name</label>
@@ -38,6 +38,10 @@
         <input type="text" name="country" id="">
     </div>
 </div>
+<!-- <div>
+    <label for="address"> Address </label>
+    <input type="text" name="address">
+</div> -->
 <div>
     <h6>Monday - Friday </h6>
     <label for="start_time">Start Time</label>
@@ -46,7 +50,13 @@
     <input type="time" name="close_time" id="">
 </div>
 
-<div class="">
+<div>
+    <label for="image"></label>
+    <input type="file" name="image" id="">
+</div>
+
+
+<!-- <div class="">
     <label for="sat_available">Saturday Availabilty </label>
     <input type="checkbox" name="sat_available" id="satAvailableField">
 </div>
@@ -57,7 +67,7 @@
     <label for="sat_close_time">Close Time</label>
     <input type="time" name="sat_close_time" id="">
 
-</div>
+</div> -->
 
 <!-- </form> -->
 
@@ -79,16 +89,27 @@
         <label for="insurance">Insurance</label>
         <input type="checkbox" name="insurance" id="">
     </div> -->
-    <div>
+    <!-- <div>
         <label for="id_institution">Institution Type</label>
         <select name="institution" id="id_institution">
             {% for choice in listing_instance.INSTITUTION_CHOICES %}
             <option value="{{choice.0}}">{{choice.1}}</option>
             {% endfor %}
         </select>
+    </div> -->
+    <div>
+        <label for="institution">Cateogory</label>
+        <select name="institution" id="">
+            {% for category in institution_categories %}
+            <option value="{{ category.name }}">{{category.name}}</option>
+            {% endfor %}
+        </select>
     </div>
     <button type="submit">Submit</button>
 </form>
+{% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{uploaded_file_url}}</a></p>
+{% endif %}
 {% block javascript%}
 <script src="{% static 'js/add.js' %}"></script>
 {% endblock javascript %}

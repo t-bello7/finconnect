@@ -3,6 +3,13 @@ const stateField = document.querySelector('#stateField');
 const searchField = document.querySelector('#searchField');
 
 
+categoryField.addEventListener('click', (e)=>{
+    const categoryValue = e.target.value
+    fetch('/search-listings'){
+        body:JSON.stringify({})
+    }
+})
+
 searchField.addEventListener('keyup', (e)=>
 {
     const searchValue = e.target.value

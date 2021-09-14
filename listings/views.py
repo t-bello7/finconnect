@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .models import Plans, Listings
+from .models import Plans, Listings, InstitutionCategory, PlanCategory
 import json
 from django.http import JsonResponse
 
@@ -14,8 +14,12 @@ class SearchListing(View):
     # institution = models.CharField(max_length=2, choices=INSTITUTION_CHOICES)
     # address = models.CharField(max_length=150)
         search_string = json.loads(request.body).get('searchText')
-        expense = Listings.objects.filter(
-            institution__starts_with=search_string, owner=request.user)
+        listing = Listings.objects.filter(
+            institution__starts_with=search_string)
+        context ={
+            'listing': listing
+        }
+        return render(request, 'dashboard/search-listings', context)
 class CheckBoxView(View):
     def post(self, request):
         data = json.loads(request.body)
@@ -27,8 +31,10 @@ class CheckBoxView(View):
 class InstitutionView(View):
     def get(self, request):
         listing_instance = Listings.objects.first()
+        institution_categories = InstitutionCategory.objects.all()
         context = {
-            'listing_instance': listing_instance
+            'listing_instance': listing_instance,
+            'institution_categories':institution_categories
         }
         return render(request, 'listings/add-institution.html', context)
 
@@ -42,25 +48,25 @@ class InstitutionView(View):
         address = f'{street}{city}{state},{country}'
         start_time = request.POST['start_time']
         close_time = request.POST['close_time']
-        sat_work_hours = request.POST['sat_available']
+        # sat_work_hours = request.POST['sat_available']
         institution = request.POST['institution']
-  
+        image = request.FILES['image']
         #     sat_work_hours = json.loads({'sat':'off'})
         # # data = json.loads(request.body).get('satWok')
         # check_box = data['checkbox']
-        if sat_work_hours ==  'on':
-            start_time_sat = request.POST['sat_start_time']
-            close_time_sat = request.POST['sat_close_time']
-            Listings.objects.create(owner=request.user, name=name, description=description, address=address, 
-        start_time = start_time, is_saturday_available = True ,close_time = close_time, start_time_sat = start_time_sat, close_time_sat= close_time_sat,institution=institution,)
-        else:
-            Listings.objects.create(owner=request.user, name=name, description=description, address=address, 
-        start_time = start_time, is_saturday_available = False ,close_time = close_time, start_time_sat = start_time_sat, close_time_sat= close_time_sat,institution=institution,)
+        # if sat_work_hours ==  'on':
+        #     start_time_sat = request.POST['sat_start_time']
+        #     close_time_sat = request.POST['sat_close_time']
+        Listings.objects.create(list_id=request.user, name=name, description=description, address=address , start_time=start_time, close_time=close_time,institution=institution, list_image=image)
+        # start_time = start_time, is_saturday_available = True ,close_time = close_time, start_time_sat = start_time_sat, close_time_sat= close_time_sat,institution=institution,)
+        # else:
+        #     Listings.objects.create(owner=request.user, name=name, description=description, address=address, 
+        # start_time = start_time, is_saturday_available = False ,close_time = close_time, start_time_sat = start_time_sat, close_time_sat= close_time_sat,institution=institution,)
 
-        listing_instance = Listings.objects.first()
-        context = {
-            'listing_instance': listing_instance
-        }
+        # listing_instance = Listings.objects.first()
+        # context = {
+        #     'listing_instance': listing_instance
+        # }
     
         return redirect('dashboard')
     

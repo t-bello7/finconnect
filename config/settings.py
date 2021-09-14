@@ -119,6 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+# ANYMAIL = {
+#     "SENDINBLUE_API_KEY": env.str('SMTP_KEY')
+# }
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -149,6 +153,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SITE_ID = 1
+# EMAIL_BACKEND = 'anymail.backends.sendinblue.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = False
+# DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+
+# DEFAULT_FROM_EMAIL = 'bello4aus@gmail.com'
+# SERVER_EMAIL = 'bello4aus@outlook.com'
 
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']

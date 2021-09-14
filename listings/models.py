@@ -4,6 +4,9 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
+def listing_directory_path(instance, filename):
+    return f'listing/{instance.list_id}/{filename}'
 # Create your models here.
 class Listings(models.Model):
     #change id to uuid
@@ -23,15 +26,15 @@ class Listings(models.Model):
     ]
     list_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     name = models.CharField(max_length=100)
-    institution = models.CharField(max_length=2, choices=INSTITUTION_CHOICES)
+    institution = models.CharField(max_length=35)
     address = models.CharField(max_length=150)
     description = models.TextField()
-    list_image = models.ImageField(upload_to='listing', null=True,blank=True)
+    list_image = models.ImageField(upload_to=listing_directory_path, null=True,blank=True)
     start_time = models.TimeField(auto_now=False, auto_now_add=False)
     close_time = models.TimeField(auto_now=False, auto_now_add=False)
-    is_saturday_available = models.BooleanField(default=False)
-    start_time_sat = models.TimeField(auto_now=False, auto_now_add=False)
-    close_time_sat = models.TimeField(auto_now=False, auto_now_add=False)
+    # is_saturday_available = models.BooleanField(default=False)
+    # start_time_sat = models.TimeField(auto_now=False, auto_now_add=False)
+    # close_time_sat = models.TimeField(auto_now=False, auto_now_add=False)
 
     @property
     def get_microfinance_count(self):
@@ -59,6 +62,12 @@ class Listings(models.Model):
     class Meta:
         verbose_name_plural='Listings'
     
+class InstitutionCategory(models.Model):
+    name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = 'Institutions Categories'
 
 class Plans(models.Model):
 
@@ -80,12 +89,15 @@ class Plans(models.Model):
     class Meta:
         verbose_name_plural='Plans'
 
-class PlansCategory(models.Model):
+class PlanCategory(models.Model):
     # LOAN = 'LN'
     # SAVINGS = 'SS'
     # INVESTMENT = 'IM'
     # PENSION = "PS"
     # INSURANCE = 'IS'
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
     class Meta:
         verbose_name_plural='Plans Categories'

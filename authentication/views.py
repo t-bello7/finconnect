@@ -7,6 +7,11 @@ from .decorators import user_required
 import json
 import re
 from django.http import JsonResponse
+from .utils import Util
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 User = get_user_model()
 
@@ -98,7 +103,7 @@ class RegistrationView(View):
         # validate
         # create a user account
         # keep the values in the fiels whrn validation is wrong
-
+        full_name = request.POST['name']
         email = request.POST['email']
         password = request.POST['password']
         context = {
@@ -108,11 +113,22 @@ class RegistrationView(View):
             if len(password) < 6:
                 return render(request, 'authentication/signup.html', context )
 
-            user = User.objects.create_user(email=email, password=password)
+            user = User.objects.create_user(full_name= full_name,email=email, password=password)
             user.set_password(password)
+            # user.is_active = False
             user.save()
-            #retirun succes mesage
+            current_site = get_current_site(request).domain
+            # relativelink
+            email_body = f'Hi {user.full_name}, Use link below to verify your email \n' 
+            data = {
+                'email_body': email_body, 
+                'to_email': user.email,
+                'email_subject': 'Verify your email', 
+                'email_sender':'noreply@sem',
+            }
+            return redirect('login')
 
+            # Util.send_email(data)
         return render(request, 'authentication/signup.html')
 
 
@@ -122,3 +138,15 @@ class LogoutView(View):
         logout(request)
         ##send a logout message
         return redirect('login')
+
+
+
+@method_decorator(login_required, name='dispatch')
+class ProfileView(View):
+    def get(self, request):
+        email = request.user
+        user = User.objects.get(email=email)
+        context = {
+            'user': user
+        }
+        return render(request, 'authentication/profile.html', context)

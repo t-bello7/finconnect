@@ -3,8 +3,12 @@
 
 {% block content %}
  <div>
-     {% for listing in listings %}
-        <li>{{listing.name}}</li>
+     {% for list in listings %}
+     <a href="{{ list.get_absolute_url }}">
+        <li>{{list.name}}</li>
+        <img src="{{list.list_image.url}}" alt="{{list.name}}">
+
+    </a>
      {% endfor %}
      <a href="{% url 'add_institution' %}"><button>Add an Institution</button></a>
  </div>
