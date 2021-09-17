@@ -14,13 +14,11 @@
 </head>
 <body>
     <header>
-        <div class="navbar__container">
+        <div class="navbar__container container">
             <a href="{% url 'homepage' %}" class="navbar__logo">finconnect</a>
             <!-- <input type="checkbox" name="" id="inpNavToggle"> -->
             <button class="navbar__toggle" >
-            
-                <i  class="material-icons">menu</i>
-
+               <i  class="material-icons">menu</i>
             </button>
             <ul class="nav">
                 {% if user.is_authenticated %}
@@ -31,6 +29,7 @@
                 {% else %}
                 <a class="navbar__link" href="{% url 'about' %}">About Us</a></li> 
                 <a class="navbar__link" href="{% url 'contact' %}">Contact Us</a></li> 
+                <a class="navbar__link" href="{% url 'faq' %}">FAQ</a></li>                 
                 <button><a class="" href="{% url 'signup'%}" class="">Register </a></button>
                 <button><a class="" href="{% url 'login' %}"> Login</a></button>
                 {% endif %}                

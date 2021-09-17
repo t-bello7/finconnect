@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
     <div class="faq__container">
-        <img src="{% static 'faq.png'%}" alt="">
+        <img src="{% static 'img/faq.png'%}" alt="">
         <h4>How can we help you?</h4>
         <form class="search__form" action="#" method="POST" id="searchForm">
             <div class="search__bar">
             {% csrf_token %}
-            <input class="search__input" type="search" name="search_text" id="searchField" placeholder="Search Listings">
+            <input class="search__input" type="search" name="search_text" id="searchField" placeholder="Search FAQs">
                 <!-- <input type="submit"> -->
 
             <button class="search__button" type="submit"> <i class="material-icons">search</i> Search </button>

@@ -6,9 +6,9 @@
 
 <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 
-<div class="auth__container">
-    <div class="login__image">
-        <img src="{% static 'img/amicod.png'%}" alt="">
+<div class="auth__container container">
+    <div>
+        <img src="{% static 'img/amicod.png'%}" alt="" class="auth__image">
     </div>
 
     <form class="form" action="{%url 'login' %}" method="post">

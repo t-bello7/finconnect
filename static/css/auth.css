@@ -1,8 +1,12 @@
 div.auth__container {
-  padding: 150px 0;
+  padding: 30px 0;
   display: flex;
-  width: 1200px;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+div.auth__container .auth__image {
+  width: 100%;
 }
 
 div.auth__container .form * {
@@ -75,8 +79,8 @@ div.auth__container .form__btn {
   font-size: 1.1em;
 
   color: #fff;
-  background: #14b64a;
-  border: 2px solid #0fa942;
+  background: #2351ca;
+  border: 2px solid #2351ca;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
@@ -92,4 +96,12 @@ div.auth__container .form__btn:active {
 
 .showPasswordToggle:hover {
   transform: scale(1.2);
+}
+@media screen and (max-width: 768px) {
+  div.auth__container {
+    flex-direction: column;
+  }
+  div.auth__container div.auth__image {
+    outline: 1px solid #2351ca;
+  }
 }

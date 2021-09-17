@@ -1,9 +1,11 @@
-const hambuger = document.querySelector(".nav")
-const navul = document.querySelector('nav');
+const hamburger = document.querySelector(".navbar__toggle")
+const navul = document.querySelector('.nav');
 
 function toggleNav(){
+    console.log('hey');
     navul.classList.toggle('show');
+    console.log(navul)
 }
 
 
-hamburger.addEventListner('click',toggleNav);
+hamburger.addEventListener('click', toggleNav);
