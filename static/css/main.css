@@ -91,7 +91,7 @@ div.featured__container {
 div.featured__container div.featured__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-  /* gap: 10%; */
+  column-gap: 5%;
 }
 
 div.featured__container div.featured__list .featured__link {
@@ -126,11 +126,12 @@ div.footer__container div.footer__sections {
   line-height: 1.6;
   display: flex;
   justify-content: center;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 }
 
-div.footer__container div.footer__sections div.footer_section {
+div.footer__container div.footer__sections div.footer__section {
   width: 25%;
+  /* background-color: red; */
   padding: 15px 0;
   flex-shrink: 0;
 }
@@ -155,7 +156,7 @@ div.footer__container div.footer__copyright .footer__hr {
 }
 
 @media screen and (max-width: 768px) {
-  .footer__section {
+  div.footer__container div.footer__sections div.footer__section {
     width: 100%;
   }
 }

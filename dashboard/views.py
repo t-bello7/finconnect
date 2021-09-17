@@ -84,3 +84,15 @@ class ListDetailView(View):
 
         # context["data"] = GeeksModel.objects.get(id =id)
         return render(request, 'dashboard/list-detail.html', context)
+
+
+class AboutView(View):
+    def get(self, request):
+
+        return render(request, 'dashboard/about.html')
+
+
+class ContactView(View):
+    def get(self, request):
+
+        return render(request, 'dashboard/contact.html')

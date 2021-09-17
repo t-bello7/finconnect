@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="faq__container">
+        <img src="{% static 'faq.png'%}" alt="">
+        <h4>How can we help you?</h4>
+        <form class="search__form" action="#" method="POST" id="searchForm">
+            <div class="search__bar">
+            {% csrf_token %}
+            <input class="search__input" type="search" name="search_text" id="searchField" placeholder="Search Listings">
+                <!-- <input type="submit"> -->
+
+            <button class="search__button" type="submit"> <i class="material-icons">search</i> Search </button>
+        </div> 
+        </form>
+        <div class="faq__items">
+            <!-- to work on giving dynamic questions and answer -->
+            <p>What is Finconnect?</p>
+            <p>Can I view the featured lists withour signing up?</p>
+            <p>How many microfinance institutions are enlisted on Finconect?</p>
+            <p>How many cooperative societies are enlisted on Finconnect?</p>
+            <p>How many categoris of institutions do we have on this platform?</p>
+
+
+        </div>
+    </div>
+    {% include 'partials/footer.html'%}
+{% endblock content%}

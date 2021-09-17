@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- {% include 'partials/search.html'%} -->
+
+<div class="contact__container">
+    <div class="title">
+        <h4>Get in touch with us</h4>
+    </div>
+    <div class="contact__sections">
+        <div class="contact__section">
+            <h3>Contact Information</h3>
+            <p>Fill up the form and our team will get back to you within 24hrs</p>
+
+            <p> 08132755220 </p>
+            <p> info@finconnect.com</p>
+            <p> 17, Tejusoho Street, Yaba, Lagos.</p>
+        </div>
+        <div class="contact__section">
+            <form action="">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="">
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" id="">
+                </div>                <div>
+                    <label for="messages">Message Us</label>
+                    <input type="text" name="message" id="">
+                </div>
+                <button> Send Message </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="map__container">
+    <div class="map__title">
+        <h4>17, Tejusoho Street, Yaba, Lagos.</h4>
+    </div>
+</div>
+
+{% include 'partials/footer.html' %}
+{% endblock content %}

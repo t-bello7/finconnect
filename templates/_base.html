@@ -29,6 +29,8 @@
                 <a class="navbar__link" href="{% url 'profile' %}">My Profile</a></li> 
                 <button><a class="" href="{% url 'logout'%}"> Log Out</a></button>
                 {% else %}
+                <a class="navbar__link" href="{% url 'about' %}">About Us</a></li> 
+                <a class="navbar__link" href="{% url 'contact' %}">Contact Us</a></li> 
                 <button><a class="" href="{% url 'signup'%}" class="">Register </a></button>
                 <button><a class="" href="{% url 'login' %}"> Login</a></button>
                 {% endif %}                
