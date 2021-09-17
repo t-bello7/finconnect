@@ -64,6 +64,7 @@ div.search__container form.search__form div.search__bar button.search__button {
   cursor: pointer;
   user-select: none;
 }
+
 div.categories__container {
   width: 1200px;
   margin: 0 auto;
@@ -85,13 +86,12 @@ div.featured__container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  height: 100vh;
 }
 
 div.featured__container div.featured__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-  gap: 10%;
+  /* gap: 10%; */
 }
 
 div.featured__container div.featured__list .featured__link {
@@ -101,6 +101,7 @@ div.featured__container div.featured__list div.listing img {
   width: 100%;
   height: 20rem;
 }
+
 div.locations__container {
   width: 1200px;
   margin: 0 auto;
@@ -125,7 +126,7 @@ div.footer__container div.footer__sections {
   line-height: 1.6;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 div.footer__container div.footer__sections div.footer_section {
@@ -152,12 +153,6 @@ div.footer__container div.footer__copyright .footer__hr {
   border: none;
   background: white;
 }
-
-/* @media screen and (max-width: 768px) {
-  .footer__section {
-    width: 50%;
-  }
-} */
 
 @media screen and (max-width: 768px) {
   .footer__section {

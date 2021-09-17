@@ -13,17 +13,18 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 header {
-  /* height: 100vh; */
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
-
+.main {
+  height: 100vh;
+}
 .navbar__container {
   position: fixed;
-  z-index: 1;
+  z-index: 2000;
   top: 0;
   /* left: 0; */
   background: var(--white);
@@ -32,8 +33,8 @@ header {
   height: var(--bar-height);
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
+  justify-content: center;
   align-items: center;
 }
 div.navbar__container .navbar__logo {
