@@ -4,3 +4,4 @@
 db.sqlite3
 staticfiles/
 info.txt
+/node_modules

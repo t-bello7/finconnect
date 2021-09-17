@@ -10,6 +10,7 @@ pillow = "*"
 environs = "*"
 django-heroku = "*"
 gunicorn = "*"
+django-filter = "*"
 
 [dev-packages]
 

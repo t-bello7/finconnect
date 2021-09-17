@@ -1,3 +1,1 @@
 ## FinConnect
-
-- autogenerate username

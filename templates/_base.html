@@ -10,29 +10,27 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/signup.css' %}"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <header>
         <div class="navbar__container">
-            <a href="{% url 'homepage' %}" class="">finconnect</a>
+            <a href="{% url 'homepage' %}" class="navbar__logo">finconnect</a>
+            <!-- <input type="checkbox" name="" id="inpNavToggle"> -->
+            <button class="navbar__toggle" >
+            
+                <i  class="material-icons">menu</i>
+
+            </button>
             <ul class="nav">
                 {% if user.is_authenticated %}
-                <li><a href="">My Bookings</a></li> 
-                <li><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
-                <li><a href="{% url 'profile' %}">My Profile</a></li> 
-                <button><a href="{% url 'logout'%}"> Log Out</a></button>
-
+                <a class="navbar__link" href="">My Bookings</a></li> 
+                <a class="navbar__link" href="{% url 'dashboard' %}">Manage Listsings</a></li> 
+                <a class="navbar__link" href="{% url 'profile' %}">My Profile</a></li> 
+                <button><a class="" href="{% url 'logout'%}"> Log Out</a></button>
                 {% else %}
-                <button><a href="{% url 'signup'%}" class="">Register </a></button>
-                <button><a href="{% url 'login' %}"> Login</a></button>
-
-                
-<!--          
-                {% if user.is_institution%} -->
-
-
-                <!-- {% endif %} -->
-
+                <button><a class="" href="{% url 'signup'%}" class="">Register </a></button>
+                <button><a class="" href="{% url 'login' %}"> Login</a></button>
                 {% endif %}                
             </ul>
         </div>
@@ -42,6 +40,8 @@
     {% endblock content %}
     </main>
     <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
+
     {% block javascript %}
     {% endblock javascript %}
 </body>

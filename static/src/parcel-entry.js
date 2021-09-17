@@ -1,0 +1,8 @@
+import './js/base.js'
+import './js/forms.js'
+import './js/searc.js'
+import './scss/index.scss'
+import './css/add.css'
+import './css/auth.css'
+import './css/base.css'
+import './css/main.css'
