@@ -1,10 +1,11 @@
+import json
+import random
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 # from django.contrib.auth.decorators import login_required
 # from authentication.decorators import user_required, institution_required
 from django.shortcuts import render
 from listings.models import Listings, Plans, InstitutionCategory
-import json
 from django.http import JsonResponse
 from listings.filter import InstituitionFilter
 # Create your views here.
@@ -48,13 +49,15 @@ class HomepageView(View):
         # listing_count = Listings.objects.all().filter(institution='CS').count()
         # for choice in listing_instance.INSTITUTION_CHOICES:
         categories = InstitutionCategory.objects.all()
-        listings = Listings.objects.filter()
+        listings = list(Listings.objects.all())
         plans = Plans.objects.filter()
         mfilter = InstituitionFilter
         
+        random_items = random.sample(listings, 6)
+
         context = {
             'plans': plans,
-            'listings': listings,
+            'listings': random_items,
             'listing_instance': listing_instance,
             'instituition_categories': categories,
             'filter': mfilter,

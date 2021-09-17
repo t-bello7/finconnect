@@ -72,7 +72,7 @@ div.categories__container {
 div.categories__container div.categories__list {
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 div.categories__container div.categories__list div.categories__item {
   width: 244px;
@@ -83,23 +83,22 @@ div.categories__container div.categories__list div.categories__item {
 
 div.featured__container {
   width: 100%;
-  min-width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 1200px;
+  height: 100vh;
 }
 
 div.featured__container div.featured__list {
-  width: 1200px;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
   gap: 10%;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
-div.featured__container div.featured__list a.featured__link {
+div.featured__container div.featured__list .featured__link {
   text-decoration: none;
 }
 div.featured__container div.featured__list div.listing img {
-  width: 20rem;
+  width: 100%;
   height: 20rem;
 }
 div.locations__container {

@@ -60,8 +60,9 @@
     </div>
     <div class="featured__list">
         {% for list in listings %}
-        <a href="{{ list.get_absolute_url }}" class="featured__link">
             <div class="listing">
+            <a href="{{ list.get_absolute_url }}" class="featured__link">
+
                 <img src="{{list.list_image.url}}" alt="{{list.name}}">
                 <h4>{{ list.name }}</h4>
                 <h5>{{ list.address }}</h5>
@@ -75,8 +76,9 @@
                     <h5>150</h5>
                     <h5>90</h5>
                 </div> -->
+            </a>
             </div>
-        </a>
+        
         {% endfor %}
     </div>
 </div>
