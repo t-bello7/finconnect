@@ -49,26 +49,26 @@ div.auth__container .form__input::placeholder {
   color: #bbbbbb;
 }
 
-div.auth__container .form__input--error {
+/* div.auth__container .form__input--error {
   color: #d50000;
   background: #fff8f8;
   border-color: #d50000;
-}
+} */
 
-div.auth__container .form__input--error::placeholder {
+/* div.auth__container .form__input--error::placeholder {
   color: #ffbffb;
-}
+} */
 
-div.auth__container .form__error {
+/* div.auth__container .form__error {
   padding-top: 10px;
   color: #d50000;
   font-size: 0.9em;
   visibility: hidden;
-}
+} */
 
-div.auth__container .form__input--error + .form__error {
+/* div.auth__container .form__input--error + .form__error {
   visibility: visible;
-}
+} */
 div.auth__container .form__btn {
   font-family: sans-serif;
   font-weight: 600;

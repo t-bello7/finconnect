@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "parcel build static/src/parcel-entry.js --out-file main",
+    "start": "parcel static/src/parcel-entry.js --hmr-port 34471 --out-file main"
+  },
+  "devDependencies": {
+    "naija-state-local-government": "^1.1.2",
+    "parcel": "^2.0.0-rc.0"
+  }
+}

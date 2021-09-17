@@ -9,9 +9,12 @@
         <h1>Connect with your desired vendors</h1>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit perferendis nulla sit qui, eveniet voluptatum doloremque ipsa rerum ab magni necessitatibus tempore nisi! Delectus expedita molestias optio </p>
     </div>
-    <div class="search__bar">
-        <form action="#" method="POST" id="searchForm">
-        <div>
+        <form class="search__form" action="{% url 'search-list' %}" method="POST" id="searchForm">
+            <div class="search__bar">
+            {% csrf_token %}
+            <!-- {{ filter.form}} -->
+        <!-- <div>
+            
             <select name="category" id="categoryField">
                {% for category in instituition_categories %}
                 <option value="{{ category.name }}">{{category.name}}</option>
@@ -23,15 +26,17 @@
                 <option value="">Lagos State</option>
                 <option value="">Lagos State</option>
             </select>
-        </div>
-        <div class=search__input>
-                <input type="search" name="search_text" id="searchField">
+        </div> -->
+
+            <input class="search__input" type="search" name="search_text" id="searchField" placeholder="Search Listings">
                 <!-- <input type="submit"> -->
-        </div>
-        <button type="submit">Submit</button>
+
+            <button class="search__button" type="submit"> <i class="material-icons">search</i> Search </button>
+        </div> 
         </form>
-    </div>
-</div>
+
+</div>   
+<!-- 
 <div class="categories__container">
     <div class="categories__title">
         <h2>Popular Categories</h2>
@@ -42,43 +47,35 @@
         <div class="categories__item">
             <h2>{{categories.name}}</h2>
             <hr width=200px>
-                <!-- {% with total=listings.count %} -->
-                <!-- <p>{{ total }} listings</p> -->
-                <!-- {% endwith %} -->
+                {% with total=listings.count %}
+                <p>{{ total }} listings</p>
+                {% endwith %}
         </div>
     {% endfor %}
     </div>
-</div>
+</div> -->
 <div class="featured__container">
     <div class="featured__title ">
         <h2>Featured Spaces</h2>
     </div>
     <div class="featured__list">
         {% for list in listings %}
-        <a href="{{ list.get_absolute_url }}">
             <div class="listing">
-                <img src="{{list.list_image.url}}" alt="{{list.name}}">
-                <h4>{{ list.name }}</h4>
-                <h5>{{ list.address }}</h5>
-                <h5>{{ list.number }}</h5>
-                <!-- {% if not list.is_saturday_availble %} -->
-                <h5>Monday - Friday {{ list.start_time}} {{ list.close_time}}</h5>
-                <!-- {% else %}
-                <h5>Monday - Saturday {{ list.start_time}} {{ list.close_time}}</h5>
-                {% endif %} -->
-                <!-- <div class="views">
-                    <h5>150</h5>
-                    <h5>90</h5>
-                </div> -->
+                <a href="{{ list.get_absolute_url }}" class="featured__link">
+
+                    <img src="{{list.list_image.url}}" alt="{{list.name}}">
+                    <h4>{{ list.name }}</h4>
+                    <p>{{ list.address }}</p>
+                    <h5>{{ list.number }}</h5>
+                    <h5>Monday - Friday {{ list.start_time}} {{ list.close_time}}</h5>
+                
+                </a>
             </div>
-        </a>
         {% endfor %}
- 
-  
     </div>
 </div>
 
-<div class="locations__container">
+<!-- <div class="locations__container">
     <div class="locations__title">
         <h2>Locations near you</h2>
     </div>
@@ -100,40 +97,10 @@
             <p>Ibadan</p>
         </div>
     </div>    
-</div>
+</div> -->
+
+{% include 'partials/footer.html' %}
 
 
-<div class="footer">
-    <div class="footer__sections container">
-        <div class="footer__section">
-            <span>Institutions</span>
-            <a href="" class="footer__link">Microfinance Banks</a>
-            <a href="" class="footer__link">Cooperative Societies</a>
-            <a href="" class="footer__link">Financial Banking</a>
-            <a href="" class="footer__link">Insurance Companies</a>
-        </div>
-        <div class="footer__section">
-            <span>More</span>
-            <a href="" class="footer__link">Add your Institution</a>
-            <a href="" class="footer__link">Terms and Conditions</a>
-            <a href="" class="footer__link">Privacy and Policy </a>
-            <a href="" class="footer__link">FAQS</a>
-        </div>
-        <div class="footer__section">
-            <span class="footer__title">Contact</span>
-            <a href="" class="footer__link">Twitter</a>
-            <a href="" class="footer__link">Instagram</a>
-            <a href="" class="footer__link">Linkedin</a>
-            <a href="" class="footer__link">fintechinnovationhub@gmail.com</a>
-            <a href="" class="footer__link">+234 (813)-275-5220</a>
-            <a href="" class="footer__link">17, Tejuosho Road Yaba, Lagos State</a>
-        </div>
-    </div>
-    <div class="footer__copyright container">
-        <hr class="footer__hr">
-        <p> &copy; Copyright 2021 - Finconnect Technolgies</p>
-        <p> Limited | All Rights Reserved</p>
-    </div>
-</div>
 <script src="{% static 'js/search.js'%}"></script>
 {% endblock content %}

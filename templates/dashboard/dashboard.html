@@ -2,6 +2,8 @@
 {% block title %} dashboard {% endblock title %}
 
 {% block content %}
+<a href="{% url 'add_institution' %}"><button>Add an Institution</button></a>
+
  <div>
      {% for list in listings %}
      <a href="{{ list.get_absolute_url }}">
@@ -10,6 +12,5 @@
 
     </a>
      {% endfor %}
-     <a href="{% url 'add_institution' %}"><button>Add an Institution</button></a>
  </div>
 {% endblock content %}

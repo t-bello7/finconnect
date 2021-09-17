@@ -1,11 +1,13 @@
+import json
+import random
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 # from django.contrib.auth.decorators import login_required
 # from authentication.decorators import user_required, institution_required
 from django.shortcuts import render
 from listings.models import Listings, Plans, InstitutionCategory
-import json
 from django.http import JsonResponse
+from listings.filter import InstituitionFilter
 # Create your views here.
 # @method_decorator([login_required, user_required], name='dispatch')
 class SearchListingView(View):
@@ -15,32 +17,29 @@ class SearchListingView(View):
         # )
         return render(request, 'dashboard/list-search.html')
     def post(self, request):
-    # list_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    # name = models.CharField(max_length=100)
-    # institution = models.CharField(max_length=2, choices=INSTITUTION_CHOICES)
-    # address = models.CharField(max_length=150)
         # search_string = json.loads(request.body).get('searchText')
         # institution = request.POST("category")
         # search_text = request.POST("searchText")
-        address = request.POST('state')
-        print(address)
+        # category = request.POST("category")
+        # state = request.POST("state")
+        search = request.POST["search_text"]
+        
         listings = Listings.objects.filter(
-            institution__startswith=search_text
-        ) | Listings.objects.filter(
-            description__icontains=search_text
-        ) | Listings.objects.filter(
-            address__icontains=address
-        ) | Listings.objects.filter(
-            institution__icontains = institution
-        )
+            name__icontains=search)
+        # ) | Listings.objects.filter(
+        #     description__icontains=search_text
+        # ) | Listings.objects.filter(
+        #     address__icontains=address
+        # ) | Listings.objects.filter(
+        #     institution__icontains = institution
+        # )
         context = {
-            'listings': listings
+            'listings': listings,
         }
 
-        data = listings.values()
+        # data = listings.values()
         # return JsonResponse(list(data), safe=False )
         return render(request, 'dashboard/list-search.html', context)
-
 
 
 
@@ -50,13 +49,19 @@ class HomepageView(View):
         # listing_count = Listings.objects.all().filter(institution='CS').count()
         # for choice in listing_instance.INSTITUTION_CHOICES:
         categories = InstitutionCategory.objects.all()
-        listings = Listings.objects.filter()
+        listings = list(Listings.objects.all())
         plans = Plans.objects.filter()
+        mfilter = InstituitionFilter
+        
+        random_items = random.sample(listings, 6)
+
         context = {
             'plans': plans,
-            'listings': listings,
+            'listings': random_items,
             'listing_instance': listing_instance,
-            'instituition_categories': categories
+            'instituition_categories': categories,
+            'filter': mfilter,
+
         }
         return render(request, 'dashboard/homepage.html', context)
 
