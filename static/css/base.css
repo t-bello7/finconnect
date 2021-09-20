@@ -40,10 +40,11 @@ dd {
   height: 100vh;
 }
 .navbar__container {
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   z-index: 2000;
   /* left: 0; */
+  /* position: sticky; */
   background: var(--white);
   height: var(--bar-height);
   display: flex;
