@@ -2,15 +2,23 @@
 {% block title %} dashboard {% endblock title %}
 
 {% block content %}
-<a href="{% url 'add_institution' %}"><button>Add an Institution</button></a>
 
- <div>
+<section class="dashboard my-2">
+<div class="container">
+<a class="btn my-1" href="{% url 'add_institution' %}">Add an Institution</a>
+
+ <div class="grid">
      {% for list in listings %}
-     <a href="{{ list.get_absolute_url }}">
-        <li>{{list.name}}</li>
-        <img src="{{list.list_image.url}}" alt="{{list.name}}">
+     <div class="card">
+        <a href="{{ list.get_absolute_url }}">
+            {{list.name}}
+            <img src="{{list.list_image.url}}" alt="{{list.name}}">
 
-    </a>
+        </a>
+    </div>
      {% endfor %}
  </div>
+ 
+</div>
+</section>
 {% endblock content %}

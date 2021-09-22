@@ -8,32 +8,41 @@
     <title>Finconnect - {% block title %} {% endblock title %}</title>
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/helper.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/signup.css' %}"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
 </head>
 <body>
     <header>
-        <div class="navbar__container container">
-            <a href="{% url 'homepage' %}" class="navbar__logo">finconnect</a>
-            <!-- <input type="checkbox" name="" id="inpNavToggle"> -->
-            <button class="navbar__toggle" >
-               <i  class="material-icons">menu</i>
-            </button>
-            <ul class="nav">
-                {% if user.is_authenticated %}
-                <a class="navbar__link" href="">My Bookings</a></li> 
-                <a class="navbar__link" href="{% url 'dashboard' %}">Manage Listsings</a></li> 
-                <a class="navbar__link" href="{% url 'profile' %}">My Profile</a></li> 
-                <button><a class="" href="{% url 'logout'%}"> Log Out</a></button>
-                {% else %}
-                <a class="navbar__link" href="{% url 'about' %}">About Us</a></li> 
-                <a class="navbar__link" href="{% url 'contact' %}">Contact Us</a></li> 
-                <a class="navbar__link" href="{% url 'faq' %}">FAQ</a></li>                 
-                <button><a class="" href="{% url 'signup'%}" class="">Register </a></button>
-                <button><a class="" href="{% url 'login' %}"> Login</a></button>
-                {% endif %}                
-            </ul>
+        <div class="navbar">
+            <div class="container flex">
+                <h1 class="logo">
+                <a href="{% url 'homepage' %}" class="navbar__logo">Finconnect</a>
+                <!-- <input type="checkbox" name="" id="inpNavToggle"> -->
+                </h1>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li> 
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li> 
+                        <li><a href="{% url 'faq' %}">FAQ</a></li>  
+                        {% if user.is_authenticated %}
+                        <li><a href="">My Bookings</a></li> 
+                        <li><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
+                        <li><a href="{% url 'profile' %}">My Profile</a></li> 
+                        <li><a class="btn" href="{% url 'logout'%}"> Log Out</a></li>
+                        {% else %}
+                
+                        <li><a class="btn" href="{% url 'signup'%}" class="">Register </a></li>
+                        <li><a class="btn" href="{% url 'login' %}"> Login</a></li>
+                        {% endif %}                
+                    </ul>
+                </nav>
+                <i  class="material-icons navbar__toggle">menu</i>
+            </div>
         </div>
     </header>
     <main class="main" role="main">

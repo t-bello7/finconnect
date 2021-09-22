@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 
-<div class="contact__container">
-    <div class="title">
+<section class="contact my-3">
+<div class="container ">
+    <div class="text-center my-2">
         <h4>Get in touch with us</h4>
     </div>
-    <div class="contact__sections">
-        <div class="contact__section">
+    <div class="grid">
+        <div >
             <h3>Contact Information</h3>
             <p>Fill up the form and our team will get back to you within 24hrs</p>
 
@@ -15,30 +16,30 @@
             <p> info@finconnect.com</p>
             <p> 17, Tejusoho Street, Yaba, Lagos.</p>
         </div>
-        <div class="contact__section">
-            <form action="">
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="">
-                </div>
-                <div>
-                    <label for="email">Email Address</label>
-                    <input type="text" name="email" id="">
-                </div>                <div>
-                    <label for="messages">Message Us</label>
-                    <input type="text" name="message" id="">
-                </div>
-                <button> Send Message </button>
-            </form>
+    
+        <form class="card" action="">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="">
+            </div>
+            <div>
+                <label for="email">Email Address</label>
+                <input type="text" name="email" id="">
+            </div>                <div>
+                <label for="messages">Message Us</label>
+                <input type="text" name="message" id="">
+            </div>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+</section>
+<section class=" map my-3">
+    <div class="container">
+        <div class="map__title">
+            <h4>17, Tejusoho Street, Yaba, Lagos.</h4>
         </div>
     </div>
-</div>
-
-<div class="map__container">
-    <div class="map__title">
-        <h4>17, Tejusoho Street, Yaba, Lagos.</h4>
-    </div>
-</div>
-
+</section>
 {% include 'partials/footer.html' %}
 {% endblock content %}

@@ -1,13 +1,14 @@
 {% extends '_base.html'%}
 
 {% block content %}
-<div>
-    <p>{{user.full_name}}</p>
-    <img src="#" alt="user image">
-    <p>{{user.email}}</p>
-</div>
+<section class="profile">
+    <div class="container">
+        <p>{{user.full_name}}</p>
+        <img src="#" alt="user image">
+        <p>{{user.email}}</p>
+    </div>
+</section>
 {% endblock content %}
 
 {% block javascript %}
-<script src="{% static 'js/forms.js' %}"></script>
 {% endblock javascript %}

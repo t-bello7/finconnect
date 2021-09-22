@@ -5,32 +5,32 @@
 <div class="image__slider">
 <img src="{{list.list_image.url}}" alt="">
 </div>
-<div class="details">
-    <p>{{list.address}}</p>
-    <h2>{{list.name}}</h2>
-    <hr width=200px>
-    <p>
-        {{list.description}}
-    </p>
-    <hr>
-    <h2>Availabilty</h2>
-    {% if not list.is_saturday_availble %}
-    <h5>Monday - Friday {{ list.start_time}} - {{ list.close_time}}</h5>
-    {% else %}
-    <h5>Monday - Saturday {{ list.start_time}} - {{ list.close_time}}</h5>
-    {% endif %}
-    <hr>
-    <h2>Reviews</h2>
-    <p>comments</p>
+<section>   
 
-</div>
+    <div class="container">
+        <p>{{list.address}}</p>
+        <h2>{{list.name}}</h2>
+        <hr width=200px>
+        <p>
+            {{list.description}}
+        </p>
+        <hr>
+        <h2>Availabilty</h2>
+        {% if not list.is_saturday_availble %}
+        <h5>Monday - Friday {{ list.start_time}} - {{ list.close_time}}</h5>
+        {% else %}
+        <h5>Monday - Saturday {{ list.start_time}} - {{ list.close_time}}</h5>
+        {% endif %}
+        <hr>
+        <h2>Reviews</h2>
+        <p>comments</p>
+        <h2>Plans</h2>
 
-<div class="plans">
-    <h2>Plans</h2>
-</div>
-<div>
-    <h2>You might like</h2>
-</div>
+    </div>
+
+ 
+
+</section>
 
 {% endfor %}
 
