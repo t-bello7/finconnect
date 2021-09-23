@@ -70,7 +70,6 @@ class InstitutionCategory(models.Model):
         verbose_name_plural = 'Institutions Categories'
 
 class Plans(models.Model):
-
     plan_id = models.ForeignKey(Listings, on_delete=models.CASCADE ,related_name='listings')
     plan_type = models.CharField(max_length=266)
     name = models.CharField(max_length=100)
@@ -80,8 +79,6 @@ class Plans(models.Model):
     percentage_return = models.FloatField()
     max_amount = models.FloatField()
     min_amount = models.FloatField()
-
-
 
     def __str__(self):
         return self.name
