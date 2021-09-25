@@ -24,15 +24,15 @@
                 <a href="{% url 'homepage' %}" class="navbar__logo">Finconnect</a>
                 <!-- <input type="checkbox" name="" id="inpNavToggle"> -->
                 </h1>
-                <nav>
+                <nav class="nav" >
                     <ul>
-                        <li><a href="{% url 'about' %}">About Us</a></li> 
-                        <li><a href="{% url 'contact' %}">Contact Us</a></li> 
-                        <li><a href="{% url 'faq' %}">FAQ</a></li>  
+                        <li> <i class="li-icons material-icons-outlined"></i><a href="{% url 'about' %}">About Us</a></li> 
+                        <li> <i class="li-icons material-icons-outlined"></i><a href="{% url 'contact' %}">Contact Us</a></li> 
+                        <li><i class="li-icons material-icons-outlined"></i><a href="{% url 'faq' %}">FAQ</a></li>  
                         {% if user.is_authenticated %}
-                        <li><a href="">My Bookings</a></li> 
-                        <li><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
-                        <li><a href="{% url 'profile' %}">My Profile</a></li> 
+                        <li> <i></i><a href="">My Bookings</a></li> 
+                        <li><i></i><a href="{% url 'dashboard' %}">Manage Listsings</a></li> 
+                        <li><i></i><a href="{% url 'profile' %}">My Profile</a></li> 
                         <li><a class="btn" href="{% url 'logout'%}"> Log Out</a></li>
                         {% else %}
                 
@@ -41,7 +41,7 @@
                         {% endif %}                
                     </ul>
                 </nav>
-                <i  class="material-icons navbar__toggle">menu</i>
+                <i class="material-icons navbar__toggle">menu</i>
             </div>
         </div>
     </header>

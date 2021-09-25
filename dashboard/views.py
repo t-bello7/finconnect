@@ -52,8 +52,7 @@ class HomepageView(View):
         listings = list(Listings.objects.all())
         plans = Plans.objects.filter()
         mfilter = InstituitionFilter
-        
-        random_items = random.sample(listings, 6)
+        random_items = random.sample(listings, 8)
 
         context = {
             'plans': plans,
