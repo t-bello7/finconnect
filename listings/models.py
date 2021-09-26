@@ -56,8 +56,8 @@ class Listings(models.Model):
     def __str__(self):
         return self.name
     
-    def get_absolute_url(self):
-        return reverse("list-detail", kwargs={'pk': str(self.pk)})
+    # def get_absolute_url(self):
+    #     return reverse("list-detail", kwargs={'pk': str(self.pk)})
 
     class Meta:
         verbose_name_plural='Listings'

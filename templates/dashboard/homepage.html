@@ -28,17 +28,16 @@
             <h1>Connect with your desired vendors</h1>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit perferendis nulla sit qui, eveniet voluptatum doloremque ipsa rerum ab magni necessitatibus tempore nisi! Delectus expedita molestias optio </p>
         </div>
-            <form class="search__form" action="{% url 'search-list' %}" method="POST" id="searchForm">
-                <div class="search__bar">
+        <form class="search__form" action="{% url 'dashboard:search-list' %}" method="POST" id="searchForm">
+            <div class="search__bar">
                 {% csrf_token %}
-        
                 <input class="search__input" type="search" name="search_text" id="searchField" placeholder="Search Listings">
                 <button class="search__button" type="submit"> <i class="material-icons">search</i> Search </button>
             </div> 
-            </form>
-    
+        </form>  
     </div> 
-    </section>  
+</section>  
+
 <section class="featured my-3 ">
     <div class="container">
         <div class="featured-heading text-center my-1 ">
@@ -47,7 +46,7 @@
         <div class="grid">
             {% for list in listings %}
                 <div class="card">
-                    <a href="{{ list.get_absolute_url }}" class="featured__link">
+                    <a href="{% url 'dashboard:list-detail' list.id%}" class="featured__link">
                         <img src="{{list.list_image.url}}" alt="{{list.name}}">
                         <h4>{{ list.name }}</h4>
                        <p><i class="fa-solid map-location-dot"></i>{{ list.address }}</p>

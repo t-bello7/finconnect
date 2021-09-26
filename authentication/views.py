@@ -27,6 +27,8 @@ class EmailValidationView(View):
         if User.objects.filter(email=email).exists():
             return JsonResponse({'email_error':'sorry email is in use, choose another one.'}, status=409)
         return JsonResponse({'email_valid':True})
+
+
 class LoginView(View):
     def get(self, request):
         return render(request, 'authentication/login.html')
@@ -40,10 +42,10 @@ class LoginView(View):
             if user:
                 # if user.is_active:
                 login(request, user)
-                return redirect('homepage')
+                return redirect('dashboard:homepage')
             print('invalid credentials')
-            return render(request, 'authentication/login.html')
-        print('fill all fields')   
+            return render(request, 'authentication/login.html') 
+            print('fill all fields')
         return render(request, 'authentication/login.html')
         
             
@@ -80,7 +82,7 @@ class RegistrationView(View):
                 'email_subject': 'Verify your email', 
                 'email_sender':'noreply@sem',
             }
-            return redirect('login')
+            return redirect('authentication:login')
 
             # Util.send_email(data)
         return render(request, 'authentication/signup.html')
@@ -91,7 +93,7 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         ##send a logout message
-        return redirect('login')
+        return redirect('authentication:login')
 
 
 
