@@ -6,9 +6,9 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     # path('dashboard', DashboardView.as_view(), name='dashboard'),
     path('', HomepageView.as_view(), name='homepage'),
-    path('dashboard', login_required(DashboardView.as_view()), name='dashboard'),
-    path('search-listings',SearchListingView.as_view(), name='search-list'),
-    path('<int:pk>', ListDetailView.as_view(),name='list-detail'),
+    path('dashboard/', login_required(DashboardView.as_view()), name='dashboard'),
+    path('search-listings/',SearchListingView.as_view(), name='search-list'),
+    path('<int:pk>/', ListDetailView.as_view(),name='list-detail'),
     path('about', AboutView.as_view(), name='about'),
     path('contact', ContactView.as_view(), name='contact'),
     # path('<str:location>', ListDetailView.as_view(), name='list-location')

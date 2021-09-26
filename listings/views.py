@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import (render, redirect, get_object_or_404)
 from django.views.generic import View
 from .models import Plans, Listings, InstitutionCategory, PlanCategory
 import json
 from django.http import JsonResponse
+from .forms import ListingsForm
 
 # Create your views here.
 
@@ -70,6 +71,24 @@ class InstitutionView(View):
     
         return redirect('dashboard')
     
+class UpdateListingView(View):
+    def get(self, request, pk):
+        context = {}
+
+        #fetch the object 
+        obj = get_object_or_404(Listings, id=pk)
+
+        form = ListingsForm(request.POST or None, instance = obj)
+        if form.is_valid():
+            form.save()
+            return HttpResponeRedirect("/"+id)
+        
+        context["form"] = form
+
+        return render(request, "listings/update-listing.html", context)
+
+        
+
 
 class PlanView(View):
     def get(self, request):

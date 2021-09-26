@@ -67,7 +67,6 @@ class HomepageView(View):
 class DashboardView(View):
     def get(self, request):
         listings_created_by_user = Listings.objects.filter(list_id=request.user)
-        print(listings_created_by_user)
         context = {
             'listings': listings_created_by_user
         }

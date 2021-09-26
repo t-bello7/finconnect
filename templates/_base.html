@@ -17,6 +17,9 @@
 
 </head>
 <body>
+    <div class="loader">
+        <div class="loading-spinner"></div>
+    </div>
     <header>
         <div class="navbar">
             <div class="container flex">
@@ -45,13 +48,14 @@
             </div>
         </div>
     </header>
+
     <main class="main" role="main">
     {% block content %}
     {% endblock content %}
     </main>
     <script src="{% static 'js/base.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
-
+  
     {% block javascript %}
     {% endblock javascript %}
 </body>

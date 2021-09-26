@@ -5,16 +5,14 @@
 
 <section class="dashboard my-2">
 <div class="container">
-<a class="btn my-1" href="{% url 'add_institution' %}">Add an Institution</a>
+<a class="btn my-1" href="{% url 'listings:add_institution'%}">Add an Institution</a>
 
  <div class="grid">
      {% for list in listings %}
      <div class="card">
-        <a href="{{ list.get_absolute_url }}">
+        <a href="{% url 'listings:update_institution' list.id %}"> Edit </a>
             {{list.name}}
             <img src="{{list.list_image.url}}" alt="{{list.name}}">
-
-        </a>
     </div>
      {% endfor %}
  </div>
