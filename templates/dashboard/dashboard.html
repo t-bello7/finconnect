@@ -7,15 +7,15 @@
 <div class="container">
 <a class="btn my-1" href="{% url 'listings:add_institution' %}">Add an Institution</a>
 
- <div class="grid">
-     {% for list in listings %}
-     <div class="card">
-        <a href="{% url 'listings:update_institution' list.id %}"> Edit </a>
-            {{list.name}}
-            <img src="{{list.list_image.url}}" alt="{{list.name}}">
+    <div class="grid">
+        {% for list in listings %}
+        <div class="card">
+            <a href="{% url 'listings:update_institution' list.id %}"> Edit </a>
+                {{list.name}}
+                <img src="{{list.list_image.url}}" alt="{{list.name}}">
+        </div>
+        {% endfor %}
     </div>
-     {% endfor %}
- </div>
  
 </div>
 </section>

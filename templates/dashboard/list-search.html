@@ -12,20 +12,21 @@
     <button type="submit"> Financial Savings</button>
     <button> Microfinance Bank </button>
 </div> -->
-
-<div class="featured__list">
+<section class = "filter my-3">
+<div class="container">
+<div class="grid">
     {% for list in listings %}
     <a href="{{ list.get_absolute_url }}">
-        <div class="listing">
+        <div class="card">
             <img src="{{list.list_image.url}}" alt="{{list.name}}">
             <h4>{{ list.name }}</h4>
             <h5>{{ list.address }}</h5>
             <h5>{{ list.number }}</h5>
             <h5>Monday - Friday {{ list.start_time}} {{ list.close_time}}</h5>
-        </a>
+        </div>
+    </a>
     {% endfor %}
-
-
-    </div>
-
+</div>
+</div>
+</section>
 {% endblock content %}

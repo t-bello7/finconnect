@@ -209,6 +209,10 @@ div.auth__container .form__input {
   background: #f9f9f9;
   transition: background 0.25s, boder-color 0.25s, color 0.25s;
 }
+
+div.auth__container .form__input--error {
+  border: 1px solid red;
+}
 div.auth__container .form__input:focus {
   background: #fff;
 }
@@ -271,21 +275,21 @@ div.auth__container .form__btn {
   .navbar nav {
     display: none;
   }
+
   .navbar .show {
+    position: absolute;
     display: flex;
     left: 0px;
     flex-direction: column;
     justify-content: flex-start;
-    position: relative;
     align-items: center;
-    /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25); */
-    /* align-content: flex-end; */
-    position: absolute;
+    z-index: 99;
     width: 100%;
     background-color: var(--light-color);
     /* opacity: 0.7; */
     top: var(--bar-height);
-    height: calc(100vh - var(--bar-height));
+    /* height: calc(100vh - var(--bar-height)); */
+    height: 100vh;
   }
 
   .navbar ul {

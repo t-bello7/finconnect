@@ -82,7 +82,7 @@ class RegistrationView(View):
                 'email_subject': 'Verify your email', 
                 'email_sender':'noreply@sem',
             }
-            return redirect('authentication:login')
+            return redirect('login')
 
             # Util.send_email(data)
         return render(request, 'authentication/signup.html')
@@ -93,7 +93,7 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         ##send a logout message
-        return redirect('authentication:login')
+        return redirect('login')
 
 
 

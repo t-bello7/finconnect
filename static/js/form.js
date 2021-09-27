@@ -1,25 +1,22 @@
 
-import NaijaStates  from 'naija-state-local-government';
-
-
+// import NaijaStates  from 'naija-state-local-government';
 const emailField = document.querySelector('#emailField');
 const feedBackField = document.querySelector('.invalid_feedback');
 const successOutput = document.querySelector('.success_feedback');
 const showPasswordToggle = document.querySelector('.showPasswordToggle')
 const passwordFieldToggle = document.querySelector('#passwordField');
-const submitBtn = document.querySelector('.submit-btn')
+const submitBtn = document.querySelector('.form__btn')
 // const satAvailableField = document.querySelector('#satAvailableField')
 const satWorkHours = document.querySelector('.sat_work_hours')
 
-
-console.log(NaijaStates.all());
+// console.log(hel)
+// console.log(NaijaStates.all());
 
 emailField.addEventListener('keyup', (e)=>{
     const emailVal = e.target.value;
     successOutput.style.display="block";
-
     successOutput.textContent = `Checking ${emailVal}`;
-    emailField.classList.remove('.is-error');
+    emailField.classList.add('form__input--error');
     feedBackField.style.display = 'none';
     if (emailVal.length > 0 ){    
         fetch('/auth/validate-email', {
@@ -31,7 +28,9 @@ emailField.addEventListener('keyup', (e)=>{
         successOutput.style.display="none";
         if(data.email_error){
             submitBtn.disabled = true;
-            emailField.classList.add('.is-error')
+            submitBtn.classList.remove('form__btn')
+            submitBtn.classList.add('alert-error')
+            emailField.classList.add('form__input--error');
             feedBackField.style.display = 'block'
             feedBackField.innerHTML = `<p>${data.email_error}<p>`
         }else{
@@ -57,26 +56,26 @@ showPasswordToggle.addEventListener('click', handleToggleInput);
 
 // satAvailableField.value = 'off'
 // console.log(satAvailableField.value)
-let checkBoxClick = 0;
-satAvailableField.addEventListener('click', (e)=>{
-    checkBoxClick += 1
-    let satAvailableVal = e.target.value;
-    // satAvailableField.value = 'on'
+// let checkBoxClick = 0;
+// satAvailableField.addEventListener('click', (e)=>{
+//     checkBoxClick += 1
+//     let satAvailableVal = e.target.value;
+//     // satAvailableField.value = 'on'
 
-    console.log(satAvailableVal)
-    console.log(typeof(satAvailableVal));
-    if (satAvailableVal === 'on' && checkBoxClick % 2 === 1){
-        satWorkHours.style.display = "block";
-        fetch('/list/checkbox', {
-        body:JSON.stringify({checkbox:checkBoxClick}),
-        method: "POST",}).then(res=> res.json())
-        .then((data)=>{
-            console.log('data', data);
-            if (data.check_invalid){
-                satAvailableField = 'off';
-            }
-        })
-    } else{
-        satWorkHours.style.display = "none";
-    }
-})
+//     console.log(satAvailableVal)
+//     console.log(typeof(satAvailableVal));
+//     if (satAvailableVal === 'on' && checkBoxClick % 2 === 1){
+//         satWorkHours.style.display = "block";
+//         fetch('/list/checkbox', {
+//         body:JSON.stringify({checkbox:checkBoxClick}),
+//         method: "POST",}).then(res=> res.json())
+//         .then((data)=>{
+//             console.log('data', data);
+//             if (data.check_invalid){
+//                 satAvailableField = 'off';
+//             }
+//         })
+//     } else{
+//         satWorkHours.style.display = "none";
+//     }
+// })
