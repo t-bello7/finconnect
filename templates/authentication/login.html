@@ -19,7 +19,7 @@
         {% csrf_token %}
         <div class="form__item">
             <label for="email" class="form__label">Email Address</label>
-            <input type="email" class="form__input form__input--error" name="email" id="emailField" placeholder="abc@xyz.com" value="{{fieldValues.email}}">
+            <input type="email" class="form__input" name="email" id="emailField" placeholder="abc@xyz.com" value="{{fieldValues.email}}">
             <span class="form__error"></span>
         </div>
         <!-- <div class="invalid_feedback" style="display: none;">
@@ -28,7 +28,7 @@
         </div> -->
         <div class="form__item ">
             <label for="password" class="form__label">Password</label>
-            <input type="password" class="form__input form__input--error"name="password" id="passwordField" placeholder="Password">
+            <input type="password" class="form__input "name="password" id="passwordField" placeholder="Password">
             <span class="form__error"></span>
             <small class="showPasswordToggle">SHOW</small>
         </div>

@@ -4,7 +4,7 @@
 <section class="profile">
     <div class="container">
         <p>{{user.full_name}}</p>
-        <img src="#" alt="user image">
+        <img src="{{ user.userprofile.profile_image.url }}" alt="user image">
         <p>{{user.email}}</p>
     </div>
 </section>

@@ -13,7 +13,8 @@ from datetime import datetime, timedelta
 
 # Create your models here.
 
-
+def user_directory_path(instance, filename):
+    return f'user/{instance.user.id}/{filename}'
 class MyUserManager(UserManager):
     use_in_migrations = True
 
@@ -118,8 +119,8 @@ class UserProfile(models.Model):
                 counter += 1
             instance.username = username
     models.signals.pre_save.connect(set_username, sender=settings.AUTH_USER_MODEL)
-    profile_image = models.ImageField(null=True,blank=True)
+    profile_image = models.ImageField(upload_to=user_directory_path,null=True,blank=True)
 
-    def __str__():
-        return self.full_name
+    def __str__(self):
+        return self.user.full_name
 
