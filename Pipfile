@@ -11,11 +11,10 @@ environs = "*"
 django-heroku = "*"
 gunicorn = "*"
 django-filter = "*"
+faker = "*"
+coverage = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
-
-[packages.django-anymail]
-extras = [ "sparkpost", "sendgird",]
+python_version = "3.8.5"
