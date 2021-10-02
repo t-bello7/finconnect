@@ -149,6 +149,27 @@ div.categories__container div.categories__list div.categories__item {
   align-items: flex-start;
 }
 
+.list-image {
+  height: 400px;
+}
+.list-image .flex {
+  justify-content: space-between;
+}
+
+.list-image .list-contact-icons {
+  align-self: flex-start;
+}
+.list-image .list-detail {
+  align-self: flex-end;
+}
+.list-detail .flex {
+  justify-content: space-between;
+}
+
+.list-category .flex {
+  justify-content: space-evenly;
+}
+
 div.auth__container {
   padding: 30px 0;
   display: flex;

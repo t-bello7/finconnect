@@ -63,7 +63,10 @@
   background: var(--primary-color);
   color: var(--font-color);
 }
-
+.bg-img {
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 .bg-secondary,
 .btn-secondary {
   background: var(--secondary-color);
@@ -74,6 +77,10 @@
   background: var(--dark-color);
   color: #fff;
 }
+/* 
+.bg-img {
+  background-image: url({{list.list_image.url}});
+} */
 
 .bg-light,
 .btn-light {
