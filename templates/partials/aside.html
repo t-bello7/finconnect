@@ -1,0 +1,13 @@
+{% load static %}
+<div class="sidebar bg-secondary flex">
+    <div class="circle my-5">
+        <img class="profile-img" src="{{ user.userprofile.profile_image.url }}" alt="user image">
+    </div>
+    <p class="my-3">Menu</p>
+    <div class="sidemenu">
+    <ul>
+        <li>Dashboard</li>
+        <li>logout</li>
+    </ul>
+    </div>
+</div>

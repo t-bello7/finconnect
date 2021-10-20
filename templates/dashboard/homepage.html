@@ -23,10 +23,14 @@
     </div>
 </div> -->
 <section class="search bg-primary">
-    <div class="container flex">
+    <div class=" container flex">
         <div class="search-text">
             <h1>Connect with your desired vendors</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit perferendis nulla sit qui, eveniet voluptatum doloremque ipsa rerum ab magni necessitatibus tempore nisi! Delectus expedita molestias optio </p>
+            <p>Finconnect is an online platform for integrated financial services ranging from loans, savings, payments, insurance, investment etc.
+
+                We provide financial users access to several financial service providers thereby serving as a medium of interconnection between financial users and service providers.
+                
+                In real sense, we are a tech-based online supermarkert </p>
         </div>
         <form class="search__form" action="{% url 'dashboard:search-list' %}" method="POST" id="searchForm">
             <div class="search__bar">
@@ -52,7 +56,6 @@
                        <p><i class="fa-solid map-location-dot"></i>{{ list.address }}</p>
                        <p><i class="fa-solid fa-phone"></i>{{ list.number }}</p>
                         <p><i class="fa-solid fa-calendar-days"></i> Monday - Friday {{ list.start_time}} {{ list.close_time}}</p>
-                    
                     </a>
                 </div>
             {% endfor %}

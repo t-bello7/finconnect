@@ -1,6 +1,6 @@
 from django.contrib.auth import login,authenticate, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,reverse
 from django.views.generic import CreateView, View
 from .forms import UserSignUpForm,InstitutionSignUpForm, UserAuthenticateForm
 from .decorators import user_required
@@ -11,6 +11,10 @@ from .utils import Util
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+
 
 
 User = get_user_model()
@@ -87,9 +91,30 @@ class RegistrationView(View):
             # Util.send_email(data)
         return render(request, 'authentication/signup.html')
 
+class RequestPasswordResetView(View):
 
+    def get(self, request):
+        pass
+
+    def post(self, request):
+        email = request.POST['email']
+        if User.objects.filter(email=email().exists()):
+            user = User.objects.filter(email=email)
+            token = PasswordResetTokenGenerator().make_token(user)
+            current_site = get_current_site(request).domain
+            uid64 = urlsafe_base64_encode(user.id)
+            relative_link = reverse(
+                'password-reset-confirm', kwargs={'uid64':uid64}
+            )
+            redirect_url = request.data.get('redirect_url','')
+            absurl = 'https://'+current_site+relative_link
+            email_body = 'Hello '+user.username+' Use link to reset your password  \n' + \
+                absurl+"?redirect_url="+redirect_url
+
+            #send mail here
+        return Response({'success': 'we have sent you a link to reset your password'})
+ 
 class LogoutView(View):
-
     def get(self, request):
         logout(request)
         ##send a logout message

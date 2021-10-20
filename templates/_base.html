@@ -27,22 +27,23 @@
                 <a href="{% url 'dashboard:homepage' %}" class="navbar__logo">Finconnect</a>
                 <!-- <input type="checkbox" name="" id="inpNavToggle"> -->
                 </h1>
-                <nav class="nav" >
-                    <ul>
-                        <li> <i class="li-icons material-icons-outlined"></i><a href="{% url 'dashboard:about' %}">About Us</a></li> 
-                        <li> <i class="li-icons material-icons-outlined"></i><a href="{% url 'dashboard:contact' %}">Contact Us</a></li> 
-                        <li><i class="li-icons material-icons-outlined"></i><a href="{% url 'faq:faq' %}">FAQ</a></li>  
+                <nav class="nav flex" >
+                    <ul class="flex">
+                        <li> <i class="li-icons material-icons-outlined"></i><a class="routes" href="{% url 'dashboard:about' %}">About Us</a></li> 
+                        <li> <i class="li-icons material-icons-outlined"></i><a class="routes" href="{% url 'dashboard:contact' %}">Contact Us</a></li> 
+                        <li><i class="li-icons material-icons-outlined"></i><a class="routes" href="{% url 'faq:faq' %}">FAQ</a></li>  
                         {% if user.is_authenticated %}
-                        <li> <i></i><a href="">My Bookings</a></li> 
+                        <li> <i></i><a class="routes" href="">My Bookings</a></li> 
                         <li><i></i><a href="{% url 'dashboard:list' %}">Manage Listsings</a></li> 
-                        <li><i></i><a href="{% url 'profile' %}">My Profile</a></li> 
-                        <li><a class="btn" href="{% url 'logout' %}"> Log Out</a></li>
-                        {% else %}
-                
-                        <li><a class="btn" href="{% url 'signup' %}">Register </a></li>
-                        <li><a class="btn" href="{% url 'login' %}"> Login</a></li>
-                        {% endif %}                
+                        <li><i></i><a href="{% url 'profile' %}">My Profile</a></li>
+                        {% endif %}                           
                     </ul>
+                    {% if user.is_authenticated %}
+                    <a class="btn" href="{% url 'logout' %}"> Log Out</a>  
+                    {% else %}
+                    <a class="btn" href="{% url 'signup' %}">Register </a>
+                    <a class="btn" href="{% url 'login' %}"> Login</a>
+                    {% endif %}  
                 </nav>
                 <i class="material-icons navbar__toggle">menu</i>
 

@@ -92,12 +92,35 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'default':env.dj_db_url("DATABASE_URL")
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'hobby_database',
+            'USER': 'postgres',
+            'PASSWORD': 'PriVaCy2021',
+            'HOST': 'ec2-3-233-43-103.compute-1.amazonaws.com',
+            'PORT': 5432,
+            'TEST': {
+                'NAME': 'dd76oknto0rdqd', #This is an important entry
+            }
+        }
+        # 'default':{
+        #     'default': env.dj_db_url('TEST_DATABASE_URL'),
+        #     # 'TEST':{
+        #     #     'NAME':dd76oknto0rdqd,
+        #     # }
+        # }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'default':env.dj_db_url("DATABASE_URL")
+        },
+        'TEST': {
+                'NAME': 'dd76oknto0rdqd', #This is an important entry
+            }
+    }
 
 
 # Password validation

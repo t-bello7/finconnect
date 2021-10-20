@@ -2,10 +2,18 @@
 
 {% block content %}
 <section class="profile">
-    <div class="container">
-        <p>{{user.full_name}}</p>
-        <img src="{{ user.userprofile.profile_image.url }}" alt="user image">
-        <p>{{user.email}}</p>
+    <div class="container flex">
+        {% include 'partials/aside.html' %}
+
+        <div class="profile__edit">
+            <div>
+                <p>{{user.full_name}}</p>
+                <p>{{user.email}}</p>
+            </div>
+            <div>
+                <!-- add user form to update user profile -->
+            </div>
+        </div>
     </div>
 </section>
 {% endblock content %}
