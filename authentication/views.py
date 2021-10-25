@@ -84,11 +84,9 @@ class RegistrationView(View):
                 'email_body': email_body, 
                 'to_email': user.email,
                 'email_subject': 'Verify your email', 
-                'email_sender':'noreply@sem',
             }
+            Util.send_email(data)
             return redirect('login')
-
-            # Util.send_email(data)
         return render(request, 'authentication/signup.html')
 
 class RequestPasswordResetView(View):

@@ -92,12 +92,23 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASES = {
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'default':env.dj_db_url("DATABASE_URL"),
+            'TEST': {
+                'NAME': 'dd76oknto0rdqd',
+            }
+        }
+  
+    }
+else:
+    DATABASES = {
         'default': {
             'default':env.dj_db_url("DATABASE_URL")
         },
         'TEST': {
-                'NAME': 'dd76oknto0rdqd', #This is an important entry
+                'NAME': 'dd76oknto0rdqd',
             }
     }
 
@@ -160,7 +171,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 # EMAIL_BACKEND = 'anymail.backends.sendinblue.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env.str()
+EMAIL_HOST = env.str('EMAIL_HOST')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
