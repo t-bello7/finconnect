@@ -92,28 +92,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-if 'test' in sys.argv:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'hobby_database',
-            'USER': 'postgres',
-            'PASSWORD': 'PriVaCy2021',
-            'HOST': 'ec2-3-233-43-103.compute-1.amazonaws.com',
-            'PORT': 5432,
-            'TEST': {
-                'NAME': 'dd76oknto0rdqd', #This is an important entry
-            }
-        }
-        # 'default':{
-        #     'default': env.dj_db_url('TEST_DATABASE_URL'),
-        #     # 'TEST':{
-        #     #     'NAME':dd76oknto0rdqd,
-        #     # }
-        # }
-    }
-else:
-    DATABASES = {
+DATABASES = {
         'default': {
             'default':env.dj_db_url("DATABASE_URL")
         },
@@ -181,7 +160,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 # EMAIL_BACKEND = 'anymail.backends.sendinblue.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = env.str()
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
